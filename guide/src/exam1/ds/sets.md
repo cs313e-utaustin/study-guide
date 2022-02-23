@@ -25,80 +25,55 @@ Here are some ways to instantiate 2-d lists.
 > 
 > Sets guarantee efficient uniqueness by [hashing](https://en.wikipedia.org/wiki/Hash_function) elements that
 > are added to it. This means you can only add elements to the set that are hashable (by default in Python, this
-> includes `ints`, `floats`, `strings`, and `tuples`). You can **not** add a `list` to a set because the `list` is mutable.
+> includes `ints`, `floats`, `strings`). You can **not** add a `list` to a set, even if it contains
+> int, because the `list` is mutable. You can add a `tuple` of `ints` to a set because a `tuple` is immutable and
+> an `int` is hashable.
 >
 > If you have a custom class you would like to add to a set, you would need to implement the `__hash__` function.
 ## *Iteration*
-We can iterate through a list in multiple ways (as you know from working on `WordSearch`).
 
-<p align="center" width="100%">
-    <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Row_and_column_major_order.svg/1200px-Row_and_column_major_order.svg.png"
-        alt="row-column-traversal"
-        width="250px"
-    />
-</p>
+We can iterate through a set by using the built in iterator.
 
-1. Row-order traversal
-
-    ```python
-    for row in range(len(matrix)):
-        for col in range(len(matrix[row])):
-            # Prints out each element in the matrix.
-            print(matrix[row][col])
-    ```
-2. Column-order traversal
-
-    ```python
-    for col in range(len(matrix[0])):
-        for row in range(len(matrix)):
-            # Prints out each element in the matrix.
-            print(matrix[row][col])
-    ```
-<br/>
-
-If you don't care about the index when iterating, you can also use the built-in iterator for lists to go through every element.
 ```python
-for row in matrix:
-    for element in row:
-        # Prints each element in matrix
-        print(element)
+my_set = set([1, 2, 3, 3, 5])
+
+# This prints out 1, 2, 3, and 5 (order not guaranteed).
+for elem in my_set:
+    print(elem)
 ```
+
+> *Note*: 
+> 
+> When iterating through a set, the order in which the values are given to you is
+> **not deterministic**. This means that the above code could possibly print out
+> `1, 2, 3, 5` or `5, 3, 1, 2`. There's no way of knowing since the user doesn't
+> know how the set is storing the values internally.
 
 ## *Methods*
 
-Be familiar with the following list functions:
-- `append`: adds a new element to the end of the list
-- `pop`: removes element at the given index
-- `insert`: inserts an element to the list at the given index
-- `sort`: sorts the list, can provide a custom lambda for the key
-- `extend`: adds iterable elemnts to the end of the list
+Be familiar with the following set functions:
+- `add`: adds a new element to the set,  *O(1)* time complexity.
+- `remove`: removes a specific element from the set, pass in the value. *O(1)* time complexity.
+- `union`: returns the union of the two sets. *O(n)* time complexity.
+- `intersection`: returns the intersection of two sets. *O(n)* time complexity.
 
 Lists are 0-based indexed, meaning that the first element starts at index 0 instead of 1:
 
-```python
->>> my_list = [1, 2, 3, 4, 5]
-[1, 2, 3, 4, 5]
+> *Note*: 
+> 
+> You can **not** index into a list because the set is unordered. The square bracket notation on a
+> set will throw an error.
 
->>> my_list[0]
-1
-```
-
-To get the elements near the back of the list, we can use negative indices: -1 corresponds to the last
-element, -2 the second to last, etc...
+To check if an element is in `set`, we can use `in`.
 
 ```python
->>> my_list[-1]
-5
+my_set = set([1, 2, 'dog'])
+
+print(1 in my_set) # Prints True
+print('cat' in my_set) # Prints False
 ```
 
-We can slice a list by using the following syntax:
-```python
->>> my_list[0:2]
-[1, 2]
-```
-
-Notice that the ending index is **exclusive** (this is very similar to the range function).
+Checking if an element is in a set is a *O(1)* operation.
 
 
 For more information, see: [documentation](https://docs.python.org/3/tutorial/datastructures.html).

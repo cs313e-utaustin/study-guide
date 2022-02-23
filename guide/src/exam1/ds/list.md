@@ -33,9 +33,22 @@ default = 0
 matrix = [[default for _ in range(columns)] for _ in range(rows)] 
 matrix = [[default] * columns for _ in range(rows)]
 ```
-
+> *Note*: 
+> ```python
+> matrix = [[default] * columns] * rows
+> ```
+> The above code will not work due to reference issues. The same list
+> will be duplicated across all rows.
 ## *Iteration*
-We can iterate through a list in multiple ways (as you know from working on `WordSearch`).
+We can iterate through a 1d list like so:
+```python
+my_list = [1, 2, 3, 4]
+
+for i in range(len(my_list)):
+    print(my_list[i])
+```
+
+We can iterate through a 2d list in multiple ways (as you know from working on `WordSearch`).
 
 <p align="center" width="100%">
     <img
@@ -79,5 +92,32 @@ Be familiar with the following list functions:
 - `insert`: inserts an element to the list at the given index
 - `sort`: sorts the list, can provide a custom lambda for the key
 - `extend`: adds iterable elemnts to the end of the list
+
+Lists are 0-based indexed, meaning that the first element starts at index 0 instead of 1:
+
+```python
+>>> my_list = [1, 2, 3, 4, 5]
+[1, 2, 3, 4, 5]
+
+>>> my_list[0]
+1
+```
+
+To get the elements near the back of the list, we can use negative indices: -1 corresponds to the last
+element, -2 the second to last, etc...
+
+```python
+>>> my_list[-1]
+5
+```
+
+We can slice a list by using the following syntax:
+```python
+>>> my_list[0:2]
+[1, 2]
+```
+
+Notice that the ending index is **exclusive** (this is very similar to the range function).
+
 
 For more information, see: [documentation](https://docs.python.org/3/tutorial/datastructures.html).

@@ -6,6 +6,7 @@ Contributions from students are also welcome! If you would like to add your note
 [313e-2022/study-guide](https://github.com/cs313e-2022/study-guide). Follow the instructions in the README to add a new section
 or modify an existing one.
 
+If you find a typo or wrong code, please let us know by opening an issue [here](https://github.com/cs313e-2022/study-guide/issues).
 ## Exam Information
 
 This is the tentative exam schedule:
@@ -18,6 +19,8 @@ This is the tentative exam schedule:
 | Makeup 2 | Sun, 03 Apr | 10:00 AM - 2:00 PM |
 | Test 3   | Fri, 06 May | 6:00 PM - 10:00 PM |
 | Makeup 3 | Sun, 08 May | 10:00 AM - 2:00 PM |
+
+<br/>
 
 The test will conducted through Canvas and Gradescope. There will be 4 or 5 programming
 questions at or below the difficulty of the previous assignments.

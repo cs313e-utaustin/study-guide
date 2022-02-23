@@ -17,7 +17,7 @@ def binary_search(array: List[int], find: int) -> bool:
 
     # Initializing our pointers to the start and end of the array.
     low = 0
-    high = len(array)
+    high = len(array) - 1
 
     while low <= high:
 

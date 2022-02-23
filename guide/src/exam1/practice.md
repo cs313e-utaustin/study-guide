@@ -283,8 +283,8 @@ class Solution:
 <details>
   <summary>Solution</summary>
   
-  It's easier to consider each stack of cubes as standalone and then subtract the sides that are covered by
-  the surround cubes.
+  Consider each stack of cubes as a standalone stack, and then subtract the sides that are covered by
+  the surrounding stacks.
 
 ```python
 

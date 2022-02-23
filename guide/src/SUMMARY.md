@@ -14,4 +14,4 @@
     - [Sorts](exam1/algo/sorts.md)
     - [Binary Search](exam1/algo/binsearch.md)
 
-- [Practice Problems](exam1/assignments.md)
+- [Practice Problems](exam1/practice.md)

@@ -231,7 +231,7 @@ class Solution:
   There are many possible solutions to this problem. A brute force approach is completely acceptable. The below
   approach is a more optimized/clean solution. The main idea is to keep track of all 8 possible win conditions
   for each player (3 rows + 3 columns + 2 diagonals). The win conditions are kept track of using a counter.
-  Whenever a counter reaches 3, then that player has won.
+  Whenever a counter reaches 3, that player has won.
 
 ```python
 

@@ -78,7 +78,7 @@ def insertion_sort(array: List[int]) -> None:
 
 ## *Merge Sort*
 
-**Main Idea**: Split list in half, sort on those halfs and merge.
+**Main Idea**: Split list in half, sort on those halves and merge.
 
 **Sample Implementation (Merging Step)**:
 ```python
@@ -116,8 +116,8 @@ def merge_halves(half_one: List[int], half_two: List[int]) -> List[int]:
             ret.append(leftover_list[idx])
             idx += 1
     
-    get_leftover(half_one)
-    get_leftover(half_two)
+    get_leftover(half_one, h_one_idx, ret)
+    get_leftover(half_two, h_two_idx, ret)
 
     return ret
 

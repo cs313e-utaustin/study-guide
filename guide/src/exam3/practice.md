@@ -444,7 +444,6 @@ class Solution:
 ## _Additional Problems_
 - [Leetcode: Maximum Sum Circular Subarray [Dynamic Programming]](https://leetcode.com/problems/maximum-sum-circular-subarray/)
 - [Leetcode: Invert Binary Tree [Trees]](https://leetcode.com/problems/invert-binary-tree/)
-- [Leetcode: Number of Distinct Islands [Graph]](https://leetcode.com/problems/number-of-distinct-islands/)
 - [LeetCode: Is Graph Bipartite [Graph]](https://leetcode.com/problems/is-graph-bipartite/)
 - [Codeforces: Fall Down [Graph]](https://codeforces.com/problemset/problem/1669/G)
 - [Kattis: Mountain Scenes [Dynamic Programming]](https://open.kattis.com/problems/scenes)

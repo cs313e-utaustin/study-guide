@@ -19,3 +19,6 @@
 
 # Exam 2
 - [Practice Problems](exam2/practice.md)
+
+# Exam 3
+- [Practice Problems](exam3/practice.md)

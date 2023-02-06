@@ -1,5 +1,6 @@
 # Collaborative Study Guide for CS313E
-> https://cs313e-2022.github.io/study-guide/
+
+> https://cs313e-utaustin.github.io/study-guide/
 
 ## To Edit
 
@@ -8,7 +9,7 @@ For an existing section, edit the corresponding markdown file in `guide/src`.
 To add a new section, edit `book.toml` with the name of the new section and
 the markdown file to link.
 
-Please use a different branch and open a [Pull Request](https://github.com/cs313e-2022/study-guide/pulls).
+Please use a different branch and open a [Pull Request](https://github.com/cs313e-utaustin/study-guide/pulls).
 
 ## Running Locally
 

@@ -6,12 +6,15 @@ bit harder.
 Some tips:
 
 - Spend around 30 - 50 minutes working on a problem. If you are unable to make any substantial progress, look at a hint or the solution.
-Afterwards, **make sure you write the implementation yourself**.
+  Afterwards, **make sure you write the implementation yourself**.
 - If you are able to solve the problem, try to understand other possible solutions.
 
-## *Worked Problems*
+For more information, visit: [official study guide](https://www.cs.utexas.edu/users/mitra/csSpring2023/cs313/notes/StudyGuide1.txt)
+
+## _Worked Problems_
 
 [LeetCode: Rotate String](https://leetcode.com/problems/rotate-string/)
+
 <details>
   <summary>Solution</summary>
   
@@ -20,41 +23,41 @@ Afterwards, **make sure you write the implementation yourself**.
   
   ```python
 
- class Solution:
-    def rotateString(self, s: str, goal: str) -> bool:
-        all_rotations = s * 2
-        return len(s) == len(goal) and goal in all_rotations
+class Solution:
+def rotateString(self, s: str, goal: str) -> bool:
+all_rotations = s \* 2
+return len(s) == len(goal) and goal in all_rotations
 
-  ```
-  
+````
+
 </details>
 
 <br/>
 
 [LeetCode: Two Sum](https://leetcode.com/problems/two-sum/)
 <details>
-  <summary>Solution</summary>
-  
-  The important realization here is that each number's complement (target - number) is unique. Using this information,
-  we can leverage the dictionary's uniqueness key property to store the complement and the index as a key value pair.
-  
-  ```python
+<summary>Solution</summary>
 
-  class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        
-        mapping = {}
-        for idx, num in enumerate(nums):
-            
-            # We found the complement.
-            if num in mapping:
-                return [idx, mapping[num]]
-            
-            # Store the complement and its index.
-            mapping[target - num] = idx
+The important realization here is that each number's complement (target - number) is unique. Using this information,
+we can leverage the dictionary's uniqueness key property to store the complement and the index as a key value pair.
 
-  ```
-  
+```python
+
+class Solution:
+  def twoSum(self, nums: List[int], target: int) -> List[int]:
+
+      mapping = {}
+      for idx, num in enumerate(nums):
+
+          # We found the complement.
+          if num in mapping:
+              return [idx, mapping[num]]
+
+          # Store the complement and its index.
+          mapping[target - num] = idx
+
+````
+
 </details>
 
 <br/>
@@ -71,9 +74,9 @@ Afterwards, **make sure you write the implementation yourself**.
   ```python
 
 class Solution:
-    def maxProfit(self, prices: List[int]) -> int:
-        max_profit = 0
-        
+def maxProfit(self, prices: List[int]) -> int:
+max_profit = 0
+
         # Initialize minimum to Infinity.
         minimum = math.inf
 
@@ -82,7 +85,7 @@ class Solution:
             max_profit = max(max_profit, price - minimum)
         return max_profit
 
-```
+````
 
 </details>
 
@@ -92,7 +95,7 @@ class Solution:
 
 <details>
   <summary>Solution</summary>
-  
+
   The problem specifications hints towards a binary search. However, since this a matrix, we must modify our approach.
   We can think of the matrix as a large array with the rows stacked on top of each other. Knowing this, we can set our
   `low` and `high` to the appropriate bounds: `0` and `rows * columns - 1`, respectively. To get the row, we can use
@@ -102,22 +105,22 @@ class Solution:
 
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        
+
         rows = len(matrix)
         cols = len(matrix[0])
 
         low = 0
         high = rows * cols - 1
-        
-        
+
+
         while low <= high:
             mid = low + (high - low) // 2
-            
+
             row = mid // cols
             col = mid % cols
-            
+
             val = matrix[row][col]
-            
+
             if val == target:
                 return True
             if val < target:
@@ -126,14 +129,13 @@ class Solution:
                 high = mid - 1
         return False
 
-```
+````
 
 </details>
 
 <br/>
 
 [LeetCode: Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes/)
-
 
 <details>
   <summary>Solution</summary>
@@ -149,16 +151,16 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
-        
+
         rows = set()
         cols = set()
-        
+
         for i in range(len(matrix)):
             for j in range(len(matrix[i])):
                 if matrix[i][j] == 0:
                     rows.add(i)
                     cols.add(j)
-        
+
         def set_row(row, matrix):
             for j in range(len(matrix[row])):
                 matrix[row][j] = 0
@@ -166,16 +168,15 @@ class Solution:
         def set_col(col, matrix):
             for i in range(len(matrix)):
                 matrix[i][col] = 0
-                           
+
         for row in rows:
             set_row(row, matrix)
-        
+
         for col in cols:
             set_col(col, matrix)
 
 ```
 
-  
 </details>
 
 <br/>
@@ -193,13 +194,13 @@ class Solution:
 
 class Solution:
     def countSubstrings(self, s: str) -> int:
-        
+
         size = len(s)
-        
+
         def expand_outwards(s, left, right):
-            
+
             count = 0
-            
+
             # Expand outwards while left and right pointers are the same character.
             while (left >= 0 and right < len(s) and s[left] == s[right]):
                 left -= 1
@@ -207,18 +208,19 @@ class Solution:
                 count += 1
 
             return count
-        
+
         total = 0
         for center in range(size):
-            
+
             # For odd-lengthed palindromes.
             total += expand_outwards(s, center, center)
-            
+
             # For even-lengthed palindromes.
             total += expand_outwards(s, center - 1, center)
         return total
 
-```  
+```
+
 </details>
 
 <br/>
@@ -237,43 +239,44 @@ class Solution:
 
 class Solution:
     def tictactoe(self, moves: List[List[int]]) -> str:
-        
+
         # Keep track of all 8 possible win conditions for each
         # player.
         winner_a = [0] * 8
         winner_b = [0] * 8
-        
+
         # Iterate through the moves.
         for idx, pair in enumerate(moves):
-            
+
             # Determine who the current player is.
             arr = winner_a if idx % 2 == 0 else winner_b
             x, y = pair
-            
+
             # Increment row 'win' counter.
             arr[x] += 1
-            
+
             # Increment col 'win' counter.
             arr[y + 3] += 1
-            
+
             # Increment diagonal 'win' counter.
             if x == y:
                 arr[6] += 1
-                
+
             # Increment anti-diagonal 'win' counter.
             if x == 2 - y:
                 arr[7] += 1
-        
+
         # Check all win conditions.
         for i in range(8):
             if winner_a[i] == 3:
                 return "A"
             if winner_b[i] == 3:
                 return "B"
-        
+
         return "Draw" if len(moves) == 9 else "Pending"
 
-```  
+```
+
 </details>
 
 <br/>
@@ -290,12 +293,12 @@ class Solution:
 
 class Solution:
     def surfaceArea(self, grid: List[List[int]]) -> int:
-        
+
         # Function for checking if in bounds.
         in_bounds = lambda r, c: 0 <= r < len(grid) and 0 <= c < len(grid[0])
 
         total = 0
-        
+
         # Directions for left, up, right, and down.
         dirs = [
             (1, 0),
@@ -303,35 +306,36 @@ class Solution:
             (-1, 0),
             (0, -1)
         ]
-        
+
         total = 0
         for i in range(len(grid)):
             for j in range(len(grid[i])):
-                
+
                 # Ignore if there is a hole here.
                 if grid[i][j] == 0:
                     continue
-                
+
                 # 2 for the top-down faces, 4 for the lateral sides.
                 sa = 2 + 4 * grid[i][j]
-                
+
                 for delta_x, delta_y in dirs:
                     r = i + delta_x
                     c = j + delta_y
-                    
+
                     if not in_bounds(r, c):
                         continue
-                    
+
                     # Subtract neighboring faces.
                     sa -= min(grid[r][c], grid[i][j])
                 total += sa
 
         return total
 
-```  
+```
+
 </details>
 
-## *Additional Problems*
+## _Additional Problems_
 
 - [Kattis: Eye of Sauron](https://naq21.kattis.com/problems/eyeofsauron)
 - [LeetCode: Search Insert Position](https://leetcode.com/problems/search-insert-position/)

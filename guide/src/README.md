@@ -3,10 +3,10 @@
 Welcome to the 313E Collaborative Study Guide! As the semester progresses, the TAs will be compiling important notes/information for the exams here. The information here is current for **spring 2023**.
 
 Contributions from students are also welcome! If you would like to add your notes, open up a pull request in our repository:
-[313e-2022/study-guide](https://github.com/cs313e-2022/study-guide). Follow the instructions in the README to add a new section
+[313e-utaustin/study-guide](https://github.com/cs313e-utaustin/study-guide). Follow the instructions in the README to add a new section
 or modify an existing one.
 
-If you find a typo or wrong code, please let us know by opening an issue [here](https://github.com/cs313e-2022/study-guide/issues).
+If you find a typo or wrong code, please let us know by opening an issue [here](https://github.com/cs313e-utaustin/study-guide/issues).
 
 ## Exam Information
 

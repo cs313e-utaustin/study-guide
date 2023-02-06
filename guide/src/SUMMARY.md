@@ -3,22 +3,28 @@
 [Introduction](README.md)
 
 # Exam 1
+
+## Object-Oriented Programming
+
 ## Data Structures
+
 - [Data Structures](exam1/ds.md)
-    - [Lists](exam1/ds/list.md)
-    - [Sets](exam1/ds/sets.md)
-    - [Dictionaries](exam1/ds/dictionaries.md)
 
+  - [Lists](exam1/ds/list.md)
+  - [Sets](exam1/ds/sets.md)
+  - [Dictionaries](exam1/ds/dictionaries.md)
 
-- [Algorithms](exam1/algo.md)
-    - [Sorts](exam1/algo/sorts.md)
-    - [Binary Search](exam1/algo/binsearch.md)
+<!-- - [Algorithms](exam1/algo.md)
+
+  - [Sorts](exam1/algo/sorts.md)
+  - [Binary Search](exam1/algo/binsearch.md) -->
 
 - [Practice Problems](exam1/practice.md)
 
+<!-- # Exam 2
 
-# Exam 2
 - [Practice Problems](exam2/practice.md)
 
 # Exam 3
-- [Practice Problems](exam3/practice.md)
+
+- [Practice Problems](exam3/practice.md) -->

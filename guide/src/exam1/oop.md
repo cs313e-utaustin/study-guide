@@ -26,11 +26,11 @@ An operation can request information from the object's state or update the objec
 
 ## Example
 
-```
+```python
 class CookieJar(object):
 
-  # Constructor that accepts 1 integer as a parameter, the number of cookies
-  # initially in the jar. This value defaults to 0
+  # Constructor that accepts 1 integer as a parameter, the number
+  # of cookies initially in the jar. This value defaults to 0
   def __init__(self, cookies = 0):
     self.num_cookies = cookies
 
@@ -60,7 +60,7 @@ The `self` keyword is used to reference the current instance of the class.
 
 Now, here is an example of how the class can be used:
 
-```
+```python
 def main():
   jar1 = CookieJar()
   print(jar1)           # There are 0 cookies in the cookie jar.

@@ -91,55 +91,12 @@ max_profit = 0
 
 <br/>
 
-[LeetCode: Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/)
-
-<details>
-  <summary>Solution</summary>
-
-  The problem specifications hints towards a binary search. However, since this a matrix, we must modify our approach.
-  We can think of the matrix as a large array with the rows stacked on top of each other. Knowing this, we can set our
-  `low` and `high` to the appropriate bounds: `0` and `rows * columns - 1`, respectively. To get the row, we can use
-  `mid // columns`. To get the column we can use `mid % columns`.
-
-```python
-
-class Solution:
-    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-
-        rows = len(matrix)
-        cols = len(matrix[0])
-
-        low = 0
-        high = rows * cols - 1
-
-
-        while low <= high:
-            mid = low + (high - low) // 2
-
-            row = mid // cols
-            col = mid % cols
-
-            val = matrix[row][col]
-
-            if val == target:
-                return True
-            if val < target:
-                low = mid + 1
-            else:
-                high = mid - 1
-        return False
-
-````
-
-</details>
-
-<br/>
 
 [LeetCode: Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes/)
 
 <details>
   <summary>Solution</summary>
-  
+
   We can keep track of the rows and columns to set to 0 by using a set. There is another solution which has
   constant space complexity, but for our exam purposes the below solution will be fine. Submissions will not
   be graded on efficiency for this exam.
@@ -185,7 +142,7 @@ class Solution:
 
 <details>
   <summary>Solution</summary>
-  
+
   A palindrome is symmetrical. Knowing this, we can consider every potential starting midpoint for the palindrome
   and expand outwards to count the number of valid palindromes. We'll also need to handle an edge case for even-lengthed
   palindromes.
@@ -229,7 +186,7 @@ class Solution:
 
 <details>
   <summary>Solution</summary>
-  
+
   There are many possible solutions to this problem. A brute force approach is completely acceptable. The below
   approach is a more optimized/clean solution. The main idea is to keep track of all 8 possible win conditions
   for each player (3 rows + 3 columns + 2 diagonals). The win conditions are kept track of using a counter.
@@ -285,7 +242,7 @@ class Solution:
 
 <details>
   <summary>Solution</summary>
-  
+
   Consider each stack of cubes as a standalone stack, and then subtract the sides that are covered by
   the surrounding stacks.
 
@@ -338,8 +295,8 @@ class Solution:
 ## _Additional Problems_
 
 - [Kattis: Eye of Sauron](https://naq21.kattis.com/problems/eyeofsauron)
-- [LeetCode: Search Insert Position](https://leetcode.com/problems/search-insert-position/)
 - [LeetCode: Insert Interval](https://leetcode.com/problems/insert-interval/)
 - [LeetCode: Verifying an Alien Dictionary](https://leetcode.com/problems/verifying-an-alien-dictionary/)
 - [LeetCode: Subrectangle Queries](https://leetcode.com/problems/subrectangle-queries/)
 - [Codeforces: Cute Pets](https://codeforces.com/gym/103270/problem/F)
+````

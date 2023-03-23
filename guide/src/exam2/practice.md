@@ -37,31 +37,35 @@ We might initially come up with a dynamic programming solution like this:
 ```python
 class Solution:
   def canWinNim(self, n: int) -> bool:
+      # if n = 1, 2, 3, we can win immediately.
+      if n < 4:
+          return True
 
+      # Invariant: if dp[i] is True, a player can win with i stones no matter what.
       # initialize from 0 to n, ignore the first 0.
       dp = [None for i in range(n + 1)]
-
-      # True = first player can win no matter what.
-      # False = second player can win no matter what.
 
       # base cases:
       for i in range(1, 4):
           dp[i] = True
+      dp[4] = False
 
-      # consider all cases from 4 to n.
-      for i in range(4, n + 1):
-          # loop back to consider cases for taking 1 - 3 stones
+      # Consider all cases from 4 to n.
+      for i in range(5, n + 1):
+          # Loop back to consider cases for taking 1 - 3 stones
           for j in range(1, 4):
-
-              # next second player (current first player) can win
-              # immediately break.
+              # If we take j stones, the other player will have i - j stones.
               if not dp[i - j]:
+                  # If there exists a j such that other player cannot winn, then this
+                  # player can win.
                   dp[i] = True
                   break
           else:
-              # for loop terminated without breaking. meaning it did not find a possible
-              # win condition. first player cannot win.
+              # for loop terminated without breaking, meaning it did not find a
+              # possible win condition. It is impossible to win with i stones left.
               dp[i] = False
+
+      return dp[n]
 ```
 
 Can we do better? If you manually evaluted more points for n (or examined the contents of the dynamic programming array), you'll

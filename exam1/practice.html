@@ -1,0 +1,427 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js ayu">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Practice Problems - Study Material</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Exam 1</li><li class="chapter-item expanded "><a href="../exam1/oop.html"><strong aria-hidden="true">1.</strong> OOP</a></li><li class="chapter-item expanded "><a href="../exam1/ds.html"><strong aria-hidden="true">2.</strong> Data Structures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../exam1/ds/list.html"><strong aria-hidden="true">2.1.</strong> Lists</a></li><li class="chapter-item expanded "><a href="../exam1/ds/sets.html"><strong aria-hidden="true">2.2.</strong> Sets</a></li><li class="chapter-item expanded "><a href="../exam1/ds/dictionaries.html"><strong aria-hidden="true">2.3.</strong> Dictionaries</a></li></ol></li><li class="chapter-item expanded "><a href="../exam1/practice.html" class="active"><strong aria-hidden="true">3.</strong> Practice Problems</a></li><li class="chapter-item expanded affix "><li class="part-title">Exam 2</li><li class="chapter-item expanded "><a href="../exam1/algo.html"><strong aria-hidden="true">4.</strong> Algorithms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../exam1/algo/sorts.html"><strong aria-hidden="true">4.1.</strong> Sorts</a></li><li class="chapter-item expanded "><a href="../exam1/algo/binsearch.html"><strong aria-hidden="true">4.2.</strong> Binary Search</a></li></ol></li><li class="chapter-item expanded "><a href="../exam2/practice.html"><strong aria-hidden="true">5.</strong> Practice Problems</a></li><li class="chapter-item expanded affix "><li class="part-title">Exam 3</li><li class="chapter-item expanded "><a href="../exam3/practice.html"><strong aria-hidden="true">6.</strong> Practice Problems</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Study Material</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="practice-problems"><a class="header" href="#practice-problems">Practice Problems</a></h1>
+<p>The following practice problems may be helpful for your preparation. You can expect the exam questions to be around the same level or a little
+bit harder.</p>
+<p>Some tips:</p>
+<ul>
+<li>Spend around 30 - 50 minutes working on a problem. If you are unable to make any substantial progress, look at a hint or the solution.
+Afterwards, <strong>make sure you write the implementation yourself</strong>.</li>
+<li>If you are able to solve the problem, try to understand other possible solutions.</li>
+</ul>
+<p>For more information, visit: <a href="https://www.cs.utexas.edu/users/mitra/csSpring2023/cs313/notes/StudyGuide1.txt">official study guide</a></p>
+<h2 id="worked-problems"><a class="header" href="#worked-problems"><em>Worked Problems</em></a></h2>
+<p><a href="https://leetcode.com/problems/rotate-string/">LeetCode: Rotate String</a></p>
+<details>
+  <summary>Solution</summary>
+<p>We can generate all rotations of the string by concatenating the two strings together and checking
+if the substring is present.</p>
+<pre><code class="language-python">
+class Solution:
+def rotateString(self, s: str, goal: str) -&gt; bool:
+all_rotations = s \* 2
+return len(s) == len(goal) and goal in all_rotations
+
+</code></pre>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/two-sum/">LeetCode: Two Sum</a></p>
+<details>
+<summary>Solution</summary>
+<p>The important realization here is that each number's complement (target - number) is unique. Using this information,
+we can leverage the dictionary's uniqueness key property to store the complement and the index as a key value pair.</p>
+<pre><code class="language-python">
+class Solution:
+  def twoSum(self, nums: List[int], target: int) -&gt; List[int]:
+
+      mapping = {}
+      for idx, num in enumerate(nums):
+
+          # We found the complement.
+          if num in mapping:
+              return [idx, mapping[num]]
+
+          # Store the complement and its index.
+          mapping[target - num] = idx
+
+</code></pre>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/">LeetCode: Best Time to Buy and Sell Stock</a></p>
+<details>
+  <summary>Solution</summary>
+<p>The most difficult part of this is ensuring that we sell after buying the sock (i.e, the peak must be after the trough).
+To do this, let's consider every potential day as a selling day and keep track of the minimum. This way, we guarantee that
+we've passed the minimum before we sell.</p>
+<pre><code class="language-python">
+class Solution:
+def maxProfit(self, prices: List[int]) -&gt; int:
+max_profit = 0
+
+      # Initialize minimum to Infinity.
+      minimum = math.inf
+
+      for price in prices:
+          minimum = min(price, minimum)
+          max_profit = max(max_profit, price - minimum)
+      return max_profit
+
+</code></pre>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/set-matrix-zeroes/">LeetCode: Set Matrix Zeroes</a></p>
+<details>
+  <summary>Solution</summary>
+<p>We can keep track of the rows and columns to set to 0 by using a set. There is another solution which has
+constant space complexity, but for our exam purposes the below solution will be fine. Submissions will not
+be graded on efficiency for this exam.</p>
+<pre><code class="language-python">
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -&gt; None:
+        &quot;&quot;&quot;
+        Do not return anything, modify matrix in-place instead.
+        &quot;&quot;&quot;
+
+        rows = set()
+        cols = set()
+
+        for i in range(len(matrix)):
+            for j in range(len(matrix[i])):
+                if matrix[i][j] == 0:
+                    rows.add(i)
+                    cols.add(j)
+
+        def set_row(row, matrix):
+            for j in range(len(matrix[row])):
+                matrix[row][j] = 0
+
+        def set_col(col, matrix):
+            for i in range(len(matrix)):
+                matrix[i][col] = 0
+
+        for row in rows:
+            set_row(row, matrix)
+
+        for col in cols:
+            set_col(col, matrix)
+
+</code></pre>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/palindromic-substrings/">LeetCode: Palindromic Substrings</a></p>
+<details>
+  <summary>Solution</summary>
+<p>A palindrome is symmetrical. Knowing this, we can consider every potential starting midpoint for the palindrome
+and expand outwards to count the number of valid palindromes. We'll also need to handle an edge case for even-lengthed
+palindromes.</p>
+<pre><code class="language-python">
+class Solution:
+    def countSubstrings(self, s: str) -&gt; int:
+
+        size = len(s)
+
+        def expand_outwards(s, left, right):
+
+            count = 0
+
+            # Expand outwards while left and right pointers are the same character.
+            while (left &gt;= 0 and right &lt; len(s) and s[left] == s[right]):
+                left -= 1
+                right += 1
+                count += 1
+
+            return count
+
+        total = 0
+        for center in range(size):
+
+            # For odd-lengthed palindromes.
+            total += expand_outwards(s, center, center)
+
+            # For even-lengthed palindromes.
+            total += expand_outwards(s, center - 1, center)
+        return total
+
+</code></pre>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/find-winner-on-a-tic-tac-toe-game/">LeetCode: Find Winner on a Tic Tac Toe Game</a></p>
+<details>
+  <summary>Solution</summary>
+<p>There are many possible solutions to this problem. A brute force approach is completely acceptable. The below
+approach is a more optimized/clean solution. The main idea is to keep track of all 8 possible win conditions
+for each player (3 rows + 3 columns + 2 diagonals). The win conditions are kept track of using a counter.
+Whenever a counter reaches 3, that player has won.</p>
+<pre><code class="language-python">
+class Solution:
+    def tictactoe(self, moves: List[List[int]]) -&gt; str:
+
+        # Keep track of all 8 possible win conditions for each
+        # player.
+        winner_a = [0] * 8
+        winner_b = [0] * 8
+
+        # Iterate through the moves.
+        for idx, pair in enumerate(moves):
+
+            # Determine who the current player is.
+            arr = winner_a if idx % 2 == 0 else winner_b
+            x, y = pair
+
+            # Increment row 'win' counter.
+            arr[x] += 1
+
+            # Increment col 'win' counter.
+            arr[y + 3] += 1
+
+            # Increment diagonal 'win' counter.
+            if x == y:
+                arr[6] += 1
+
+            # Increment anti-diagonal 'win' counter.
+            if x == 2 - y:
+                arr[7] += 1
+
+        # Check all win conditions.
+        for i in range(8):
+            if winner_a[i] == 3:
+                return &quot;A&quot;
+            if winner_b[i] == 3:
+                return &quot;B&quot;
+
+        return &quot;Draw&quot; if len(moves) == 9 else &quot;Pending&quot;
+
+</code></pre>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/surface-area-of-3d-shapes/">LeetCode: Surface Area of 3D Shapes</a></p>
+<details>
+  <summary>Solution</summary>
+<p>Consider each stack of cubes as a standalone stack, and then subtract the sides that are covered by
+the surrounding stacks.</p>
+<pre><code class="language-python">
+class Solution:
+    def surfaceArea(self, grid: List[List[int]]) -&gt; int:
+
+        # Function for checking if in bounds.
+        in_bounds = lambda r, c: 0 &lt;= r &lt; len(grid) and 0 &lt;= c &lt; len(grid[0])
+
+        total = 0
+
+        # Directions for left, up, right, and down.
+        dirs = [
+            (1, 0),
+            (0, 1),
+            (-1, 0),
+            (0, -1)
+        ]
+
+        total = 0
+        for i in range(len(grid)):
+            for j in range(len(grid[i])):
+
+                # Ignore if there is a hole here.
+                if grid[i][j] == 0:
+                    continue
+
+                # 2 for the top-down faces, 4 for the lateral sides.
+                sa = 2 + 4 * grid[i][j]
+
+                for delta_x, delta_y in dirs:
+                    r = i + delta_x
+                    c = j + delta_y
+
+                    if not in_bounds(r, c):
+                        continue
+
+                    # Subtract neighboring faces.
+                    sa -= min(grid[r][c], grid[i][j])
+                total += sa
+
+        return total
+
+</code></pre>
+</details>
+<h2 id="additional-problems"><a class="header" href="#additional-problems"><em>Additional Problems</em></a></h2>
+<ul>
+<li><a href="https://naq21.kattis.com/problems/eyeofsauron">Kattis: Eye of Sauron</a></li>
+<li><a href="https://leetcode.com/problems/insert-interval/">LeetCode: Insert Interval</a></li>
+<li><a href="https://leetcode.com/problems/verifying-an-alien-dictionary/">LeetCode: Verifying an Alien Dictionary</a></li>
+<li><a href="https://leetcode.com/problems/subrectangle-queries/">LeetCode: Subrectangle Queries</a></li>
+<li><a href="https://codeforces.com/gym/103270/problem/F">Codeforces: Cute Pets</a></li>
+</ul>
+<pre><code></code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../exam1/ds/dictionaries.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../exam1/algo.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../exam1/ds/dictionaries.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../exam1/algo.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

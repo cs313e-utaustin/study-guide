@@ -1,0 +1,269 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js ayu">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Dictionaries - Study Material</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Exam 1</li><li class="chapter-item expanded "><a href="../../exam1/oop.html"><strong aria-hidden="true">1.</strong> OOP</a></li><li class="chapter-item expanded "><a href="../../exam1/ds.html"><strong aria-hidden="true">2.</strong> Data Structures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../exam1/ds/list.html"><strong aria-hidden="true">2.1.</strong> Lists</a></li><li class="chapter-item expanded "><a href="../../exam1/ds/sets.html"><strong aria-hidden="true">2.2.</strong> Sets</a></li><li class="chapter-item expanded "><a href="../../exam1/ds/dictionaries.html" class="active"><strong aria-hidden="true">2.3.</strong> Dictionaries</a></li></ol></li><li class="chapter-item expanded "><a href="../../exam1/practice.html"><strong aria-hidden="true">3.</strong> Practice Problems</a></li><li class="chapter-item expanded affix "><li class="part-title">Exam 2</li><li class="chapter-item expanded "><a href="../../exam1/algo.html"><strong aria-hidden="true">4.</strong> Algorithms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../exam1/algo/sorts.html"><strong aria-hidden="true">4.1.</strong> Sorts</a></li><li class="chapter-item expanded "><a href="../../exam1/algo/binsearch.html"><strong aria-hidden="true">4.2.</strong> Binary Search</a></li></ol></li><li class="chapter-item expanded "><a href="../../exam2/practice.html"><strong aria-hidden="true">5.</strong> Practice Problems</a></li><li class="chapter-item expanded affix "><li class="part-title">Exam 3</li><li class="chapter-item expanded "><a href="../../exam3/practice.html"><strong aria-hidden="true">6.</strong> Practice Problems</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Study Material</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="dictionaries"><a class="header" href="#dictionaries">Dictionaries</a></h1>
+<p>Python dictionaries are a collection of a <strong>key-value</strong> stores. In Python 3.6+, the keys of the dictionaries
+are preserved in insertion order. The keys of the dictionary must be unique but the values do not have to be.
+We use a dictionary when we want to associate a specific key with a value and allow for fast lookup later one
+(a real life analogy would be a phonebook).</p>
+<h2 id="basics"><a class="header" href="#basics"><em>Basics</em></a></h2>
+<p>You can instantiate an empty dictionary in two ways:</p>
+<pre><code class="language-python">my_dict = {}
+my_dct = dict()
+</code></pre>
+<p>We can add to a dictionary in two ways:</p>
+<pre><code class="language-python">my_dict['bob'] = 10
+my_dict.update({'alice' : 11})
+
+# `my_dict` is now:
+# { 'bob': 10, 'alice': 11 }
+</code></pre>
+<p>We can retrieve information from a dictionary in two ways:</p>
+<pre><code class="language-python">print(my_dict['bob']) # prints out 10.
+print(my_dict.get('alice')) # prints out 11.
+</code></pre>
+<p>The dictionary keeps track of the last value added to the key:</p>
+<pre><code class="language-python">my_dict['bob'] = 10
+my_dict['bob'] = 12
+
+print(my_dict.get('bob')) # prints out 12.
+</code></pre>
+<p>Now let's take a look at an example problem to understand why dictionaries are a helfpul data structure.</p>
+<h2 id="example-usage"><a class="header" href="#example-usage"><em>Example Usage</em></a></h2>
+<p>We are given an array of earnings in an array like so:</p>
+<pre><code class="language-python">earnings = [('Bob', 1), ('Alice', 2), ('Bob', 5), ('Bob', 10), ('Alice', 11) ...]
+</code></pre>
+<p>And now we want to find the total earnings per individual.</p>
+<p>A solution without dictionaries might look like:</p>
+<pre><code class="language-python">alice = 0
+bob = 0
+for person, earning in earnings:
+    if person == 'Alice':
+        alice += earning
+    elif person == 'Bob':
+        bob += earning
+
+print(alice)
+print(bob)
+</code></pre>
+<p>This might be fine if our array only had values from <code>Bob</code> and <code>Alice</code>. However, what if we added new people?
+We would be forced to add a new conditional for every single person (which obviously isn't a scalable solution).</p>
+<p>Let's look at the solution now using dictionaries.</p>
+<pre><code class="language-python">earning_tracker = {}
+
+for person, earning in earnings:
+    earning_tracker[person] = earning_tracker.get(person, 0) + earning
+
+print(earning_tracker)
+</code></pre>
+<p>With the dictionary, we don't need to worry about each individual person; the dictionary does the tracking and updating for us.</p>
+<blockquote>
+<p><em>Note:</em></p>
+<p>When using <code>get</code>, the second parameter is a default value. The default value is returned if the key (first parameter) does not
+exist in the dictionary.</p>
+</blockquote>
+<h2 id="iteration"><a class="header" href="#iteration"><em>Iteration</em></a></h2>
+<p>The default iterator for a dictionary returns the <code>keys</code>.</p>
+<pre><code class="language-python">my_dict = {'Alice': 10, 'Bob': 5}
+
+for key in my_dict:
+    print(key) # Prints the key (person name)
+    print(my_dict[key]) # Prints the value (earning)
+</code></pre>
+<p>If we want both the key and the value, we can use the <code>items</code> function. <code>items</code> yields the key and value
+as a tuple.</p>
+<pre><code class="language-python">my_dict = {'Alice': 10, 'Bob': 5}
+
+for key, value in my_dict.items():
+    print(key) # Prints the key (person name)
+    print(value) # Prints the value (earning)
+</code></pre>
+<p>There are other ways to iterate through a dictionary (for example using the <code>keys</code> and <code>values</code> function), but the above
+should be sufficient for this course.</p>
+<h2 id="methods"><a class="header" href="#methods"><em>Methods</em></a></h2>
+<p>Be familiar with the following set functions:</p>
+<ul>
+<li><code>update</code>: Updates the dictionary based on the dictionary passed in.</li>
+<li><code>get</code>: Gets a specific value by the passed in key (or a default value if the key does not exist), <em>O(1)</em> time complexity.</li>
+<li><code>pop</code>: Removes the key-value pair based on the key passed in, <em>O(1)</em> time complexity</li>
+</ul>
+<p>To check if a key is present in a dictionary, we can use <code>in</code>:</p>
+<pre><code class="language-python">my_dict = {'Alice': 10, 'Bob': 5}
+
+print('Alice' in my_dict) # prints True
+print('John' in my_dict) # prints False
+</code></pre>
+<p>For more information, see: <a href="https://docs.python.org/3/tutorial/datastructures.html">documentation</a>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../exam1/ds/sets.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../../exam1/practice.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../exam1/ds/sets.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../../exam1/practice.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

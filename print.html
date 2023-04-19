@@ -1,0 +1,1612 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js ayu">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Study Material</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Exam 1</li><li class="chapter-item expanded "><a href="exam1/oop.html"><strong aria-hidden="true">1.</strong> OOP</a></li><li class="chapter-item expanded "><a href="exam1/ds.html"><strong aria-hidden="true">2.</strong> Data Structures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="exam1/ds/list.html"><strong aria-hidden="true">2.1.</strong> Lists</a></li><li class="chapter-item expanded "><a href="exam1/ds/sets.html"><strong aria-hidden="true">2.2.</strong> Sets</a></li><li class="chapter-item expanded "><a href="exam1/ds/dictionaries.html"><strong aria-hidden="true">2.3.</strong> Dictionaries</a></li></ol></li><li class="chapter-item expanded "><a href="exam1/practice.html"><strong aria-hidden="true">3.</strong> Practice Problems</a></li><li class="chapter-item expanded affix "><li class="part-title">Exam 2</li><li class="chapter-item expanded "><a href="exam1/algo.html"><strong aria-hidden="true">4.</strong> Algorithms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="exam1/algo/sorts.html"><strong aria-hidden="true">4.1.</strong> Sorts</a></li><li class="chapter-item expanded "><a href="exam1/algo/binsearch.html"><strong aria-hidden="true">4.2.</strong> Binary Search</a></li></ol></li><li class="chapter-item expanded "><a href="exam2/practice.html"><strong aria-hidden="true">5.</strong> Practice Problems</a></li><li class="chapter-item expanded affix "><li class="part-title">Exam 3</li><li class="chapter-item expanded "><a href="exam3/practice.html"><strong aria-hidden="true">6.</strong> Practice Problems</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Study Material</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>Welcome to the 313E Collaborative Study Guide! As the semester progresses, the TAs will be compiling important notes/information for the exams here. The information here is current for <strong>spring 2023</strong>.</p>
+<p>Contributions from students are also welcome! If you would like to add your notes, open up a pull request in our repository:
+<a href="https://github.com/cs313e-utaustin/study-guide">313e-utaustin/study-guide</a>. Follow the instructions in the README to add a new section
+or modify an existing one.</p>
+<p>If you find a typo or wrong code, please let us know by opening an issue <a href="https://github.com/cs313e-utaustin/study-guide/issues">here</a>.</p>
+<h2 id="exam-information"><a class="header" href="#exam-information">Exam Information</a></h2>
+<p>This is the tentative exam schedule:</p>
+<table><thead><tr><th>Test</th><th>Date</th><th>Time</th></tr></thead><tbody>
+<tr><td>Test 1</td><td>Fri, 10 Feb</td><td>6:00 PM - 10:00 PM</td></tr>
+<tr><td>Makeup 1</td><td>Sun, 12 Feb</td><td>10:00 AM - 2:00 PM</td></tr>
+<tr><td>Test 2</td><td>Fri, 24 Mar</td><td>6:00 PM - 10:00 PM</td></tr>
+<tr><td>Makeup 2</td><td>Sun, 26 Mar</td><td>10:00 AM - 2:00 PM</td></tr>
+<tr><td>Test 3</td><td>Mon, 24 Apr</td><td>6:00 PM - 10:00 PM</td></tr>
+<tr><td>Makeup 3</td><td>Tue, 25 Apr</td><td>10:00 AM - 2:00 PM</td></tr>
+</tbody></table>
+<br/>
+<p>The test will conducted through Canvas and Gradescope. There will be 4 or 5 programming
+questions at or below the difficulty of the previous assignments.</p>
+<p>Each question will have an autograder to check for correctness.
+Unlike the assignments, we will not grade based on style or comments.
+However, we will still manually review your submissions. If we discover that
+test cases have been hardcoded into your submission, we will deduct the appropriate amount
+of points.</p>
+<p>There will be an <strong>extra credit question</strong> that is not related to programming. This will be
+either a short answer or multiple choice question. Please work on this only if you have passed
+all the Gradescope test cases.</p>
+<h2 id="exam-tips"><a class="header" href="#exam-tips">Exam Tips</a></h2>
+<p>Before the exam:</p>
+<ul>
+<li>Review past assignments and understand the underlying algorithms (for example, merging two intervals in <code>Interval.py</code>).</li>
+<li>Review important algorithms and data structures covered in class.</li>
+<li>Be comfortable with Python syntax (this will especially help with debugging).</li>
+<li><strong>Practice!</strong> The only way to get better at thinking logically is to solve more problems.</li>
+</ul>
+<p>During the exam:</p>
+<ul>
+<li>The questions don't need to be solved in a sequential order. Move onto another problem if you're struggling with the current one.</li>
+<li>Work out some test cases by hand and see if you can identify a pattern.</li>
+<li>Start with the simplest case and build on top of that (this will especially be helpful for recursion in later exams).</li>
+<li>Approach the problem from different angles (for example, sorting the list for merging intervals).</li>
+<li>Write out pseudocode to outline your thought process and identify potential edge cases.</li>
+<li>Memory constraints are lenient, so feel free to use as many auxiliary data structures as you need -- as long as it's not egregious.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="object-oriented-programming"><a class="header" href="#object-oriented-programming">Object-Oriented Programming</a></h1>
+<p>Object-oriented programming is a programming paradigm that organizes software around data (objects), instead of functions and logic. You will have have 1 mandatory OOP problem on exam 1, where we will give you the specification for a class for you to implement.</p>
+<p>For more information, visit: <a href="https://www.cs.utexas.edu/users/mitra/csSpring2023/cs313/lectures/oop.html">OOP lecture notes</a>.</p>
+<h2 id="objects"><a class="header" href="#objects">Objects</a></h2>
+<p>An object is a concept, an abstraction, a thing with sharp boundaries and meaning for an application. It has:</p>
+<ul>
+<li>Identity - a name</li>
+<li>State - determined by the values of its attributes</li>
+<li>Behavior - determined by how the object acts or reacts to requests (messages) from other objects</li>
+</ul>
+<h2 id="classes"><a class="header" href="#classes">Classes</a></h2>
+<p>A class is a description of a group of objects with common properties (attributes), behavior (operations), relationships, and semantics. An object is an instance of a class.</p>
+<p>Classes are an abstraction - given an interface for the class, you do not need to know the implementation details to be able to perform operations on objects of the class.</p>
+<h2 id="operations-functions"><a class="header" href="#operations-functions">Operations (Functions)</a></h2>
+<p>An operation is a service that can be requested from any object of the class to affect behavior.</p>
+<p>An operation can request information from the object's state or update the object's state. The outcome of the operation depends on the current state of the object.</p>
+<h2 id="example"><a class="header" href="#example">Example</a></h2>
+<pre><code class="language-python">class CookieJar(object):
+
+  # Constructor that accepts 1 integer as a parameter, the number
+  # of cookies initially in the jar. This value defaults to 0
+  def __init__(self, cookies = 0):
+    self.num_cookies = cookies
+
+  # Add a cookie to the jar.
+  def add_cookie(self):
+    self.num_cookies += 1
+
+  # If there are any cookies left, take a cookie from the jar.
+  def take_cookie(self):
+    if self.num_cookies &gt;= 1:
+      self.num_cookies -= 1
+      return &quot;Took a cookie from the cookie jar!&quot;
+    return &quot;The cookie jar is empty :(&quot;
+
+  # String representation of the cookie jar that describes how many cookies are left.
+  def __str__(self):
+    return f&quot;There are {self.num_cookies} cookies in the cookie jar.&quot;
+
+  # Two cookie jars are equal if they have the same number of cookies.
+  def __eq__(self, other):
+    return self.num_cookies == other.num_cookies
+
+</code></pre>
+<p>The <code>self</code> keyword is used to reference the current instance of the class.
+<code>add_cookie</code> and <code>take_cookie</code> are operations that update the state of an object, while <code>__str__</code> and <code>__eq__</code> return information about the state of the object.</p>
+<p>Now, here is an example of how the class can be used:</p>
+<pre><code class="language-python">def main():
+  jar1 = CookieJar()
+  print(jar1)           # There are 0 cookies in the cookie jar.
+
+  jar2 = CookieJar(2)
+  print(jar2)           # There are 2 cookies in the cookie jar.
+  print(jar1 == jar2)   # False
+
+  jar1.add_cookie()
+  print(jar1)           # There are 1 cookies in the cookie jar.
+
+  jar2.take_cookie()
+  print(jar1 == jar2)   # True
+
+  print(jar1.take_cookie()) # Took a cookie from the cookie jar!
+  print(jar1)           # There are 0 cookies in the cookie jar.
+
+  print(jar1.take_cookie()) # The cookie jar is empty :(
+  print(jar1)           # There are 0 cookies in the cookie jar.
+
+</code></pre>
+<blockquote>
+<p><em>Note</em>:</p>
+<p>The only piece of state here is the <code>num_cookies</code> attribute of the class.
+However, to use this class (as shown in <code>main()</code>), there is no need to have any knowledge about it.</p>
+<p>The attribute could have been named <code>cookies</code>, <code>cookies_count</code>, <code>n</code>, etc; it could have been stored as a float, or a string, or whatever we liked. None of these implementation
+details would have affected any of the code in <code>main()</code>, as long as the inputs
+and outputs of each method of the class is consistent with the specifications.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="data-structures"><a class="header" href="#data-structures">Data Structures</a></h1>
+<p>The following data structures are important for the upcoming exam. Be familiar with
+their interfaces and know when the appropriate data structure is needed.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="lists"><a class="header" href="#lists">Lists</a></h1>
+<p>Python lists are <strong>mutable</strong> and <strong>ordered</strong> sequence of elements. We use lists when we
+want to track multiple elements at once and want to preserve their ordering.</p>
+<h2 id="basics"><a class="header" href="#basics"><em>Basics</em></a></h2>
+<p>You can instantiate an empty list in two ways:</p>
+<pre><code class="language-python">lst = []
+lst = list()
+</code></pre>
+<p>If you would like to initialize a list with a predetermined size and starting values:</p>
+<pre><code class="language-python">default = 0
+size = 5
+
+lst = [default for _ in range(size)]
+lst = [default] * size
+</code></pre>
+<p>2-dimensional lists are lists of lists. We often use this to represent a matrix or a grid.
+Here are some ways to instantiate 2-d lists.</p>
+<pre><code class="language-python"># Corresponds to how many lists there are.
+rows = 3
+
+# Corresponds to how many elements are in the inner list.
+columns = 2
+
+default = 0
+
+matrix = [[default for _ in range(columns)] for _ in range(rows)] 
+matrix = [[default] * columns for _ in range(rows)]
+</code></pre>
+<blockquote>
+<p><em>Note</em>: </p>
+<pre><code class="language-python">matrix = [[default] * columns] * rows
+</code></pre>
+<p>The above code will not work due to reference issues. The same list
+will be duplicated across all rows.</p>
+</blockquote>
+<h2 id="iteration"><a class="header" href="#iteration"><em>Iteration</em></a></h2>
+<p>We can iterate through a 1d list like so:</p>
+<pre><code class="language-python">my_list = [1, 2, 3, 4]
+
+for i in range(len(my_list)):
+    print(my_list[i])
+</code></pre>
+<p>We can iterate through a 2d list in multiple ways (as you know from working on <code>WordSearch</code>).</p>
+<p align="center" width="100%">
+    <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Row_and_column_major_order.svg/1200px-Row_and_column_major_order.svg.png"
+        alt="row-column-traversal"
+        width="250px"
+    />
+</p>
+<ol>
+<li>
+<p>Row-order traversal</p>
+<pre><code class="language-python">for row in range(len(matrix)):
+    for col in range(len(matrix[row])):
+        # Prints out each element in the matrix.
+        print(matrix[row][col])
+</code></pre>
+</li>
+<li>
+<p>Column-order traversal</p>
+<pre><code class="language-python">for col in range(len(matrix[0])):
+    for row in range(len(matrix)):
+        # Prints out each element in the matrix.
+        print(matrix[row][col])
+</code></pre>
+</li>
+</ol>
+<br/>
+<p>If you don't care about the index when iterating, you can also use the built-in iterator for lists to go through every element.</p>
+<pre><code class="language-python">for row in matrix:
+    for element in row:
+        # Prints each element in matrix
+        print(element)
+</code></pre>
+<h2 id="methods"><a class="header" href="#methods"><em>Methods</em></a></h2>
+<p>Be familiar with the following list functions:</p>
+<ul>
+<li><code>append</code>: adds a new element to the end of the list</li>
+<li><code>pop</code>: removes element at the given index</li>
+<li><code>insert</code>: inserts an element to the list at the given index</li>
+<li><code>sort</code>: sorts the list, can provide a custom lambda for the key</li>
+<li><code>extend</code>: adds iterable elemnts to the end of the list</li>
+</ul>
+<p>Lists are 0-based indexed, meaning that the first element starts at index 0 instead of 1:</p>
+<pre><code class="language-python">&gt;&gt;&gt; my_list = [1, 2, 3, 4, 5]
+[1, 2, 3, 4, 5]
+
+&gt;&gt;&gt; my_list[0]
+1
+</code></pre>
+<p>To get the elements near the back of the list, we can use negative indices: -1 corresponds to the last
+element, -2 the second to last, etc...</p>
+<pre><code class="language-python">&gt;&gt;&gt; my_list[-1]
+5
+</code></pre>
+<p>We can slice a list by using the following syntax:</p>
+<pre><code class="language-python">&gt;&gt;&gt; my_list[0:2]
+[1, 2]
+</code></pre>
+<p>Notice that the ending index is <strong>exclusive</strong> (this is very similar to the range function).</p>
+<p>For more information, see: <a href="https://docs.python.org/3/tutorial/datastructures.html">documentation</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sets"><a class="header" href="#sets">Sets</a></h1>
+<p>Python sets are <strong>mutable</strong>, <strong>unordered</strong> sequence of elements that are <strong>unique</strong> and <strong>iterable</strong>. We use sets when
+we are interested in guaranteeing the uniquess of elements.</p>
+<h2 id="basics-1"><a class="header" href="#basics-1"><em>Basics</em></a></h2>
+<p>You can instantiate an empty set like so:</p>
+<pre><code class="language-python">my_set = set()
+</code></pre>
+<p>If you would like to initialize a set with specific values:</p>
+<pre><code class="language-python">values = [1, 2, 3, 4]
+my_set = set(values)
+</code></pre>
+<p>If you pass in a list with duplicate values to the constructor, the set will ignore them.</p>
+<pre><code class="language-python">values = [1, 1, 1, 1]
+my_set = set(values) # `my_set` here only contains a single element: 1
+</code></pre>
+<blockquote>
+<p><em>Note</em>:</p>
+<p>Sets guarantee efficient uniqueness by <a href="https://en.wikipedia.org/wiki/Hash_function">hashing</a> elements that
+are added to it. This means you can only add elements to the set that are hashable (by default in Python, this
+includes <code>ints</code>, <code>floats</code>, <code>strings</code>). You can <strong>not</strong> add a <code>list</code> to a set, even if it contains
+int, because the <code>list</code> is mutable. You can add a <code>tuple</code> of <code>ints</code> to a set because a <code>tuple</code> is immutable and
+an <code>int</code> is hashable.</p>
+<p>If you have a custom class you would like to add to a set, you would need to implement the <code>__hash__</code> function.</p>
+</blockquote>
+<h2 id="iteration-1"><a class="header" href="#iteration-1"><em>Iteration</em></a></h2>
+<p>We can iterate through a set by using the built in iterator.</p>
+<pre><code class="language-python">my_set = set([1, 2, 3, 3, 5])
+
+# This prints out 1, 2, 3, and 5 (order not guaranteed).
+for elem in my_set:
+    print(elem)
+</code></pre>
+<blockquote>
+<p><em>Note</em>:</p>
+<p>When iterating through a set, the order in which the values are given to you is
+<strong>not deterministic</strong>. This means that the above code could possibly print out
+<code>1, 2, 3, 5</code> or <code>5, 3, 1, 2</code>. There's no way of knowing since the user doesn't
+know how the set is storing the values internally.</p>
+</blockquote>
+<h2 id="methods-1"><a class="header" href="#methods-1"><em>Methods</em></a></h2>
+<p>Be familiar with the following set functions:</p>
+<ul>
+<li><code>add</code>: adds a new element to the set, <em>O(1)</em> time complexity.</li>
+<li><code>remove</code>: removes a specific element from the set, pass in the value. <em>O(1)</em> time complexity.</li>
+<li><code>union</code>: returns the union of the two sets. <em>O(n)</em> time complexity.</li>
+<li><code>intersection</code>: returns the intersection of two sets. <em>O(n)</em> time complexity.</li>
+</ul>
+<p>Lists are 0-based indexed, meaning that the first element starts at index 0 instead of 1:</p>
+<blockquote>
+<p><em>Note</em>:</p>
+<p>You can <strong>not</strong> index into a list because the set is unordered. The square bracket notation on a
+set will throw an error.</p>
+</blockquote>
+<p>To check if an element is in <code>set</code>, we can use <code>in</code>.</p>
+<pre><code class="language-python">my_set = set([1, 2, 'dog'])
+
+print(1 in my_set) # Prints True
+print('cat' in my_set) # Prints False
+</code></pre>
+<p>Checking if an element is in a set is a <em>O(1)</em> operation.</p>
+<p>For more information, see: <a href="https://docs.python.org/3/tutorial/datastructures.html">documentation</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="dictionaries"><a class="header" href="#dictionaries">Dictionaries</a></h1>
+<p>Python dictionaries are a collection of a <strong>key-value</strong> stores. In Python 3.6+, the keys of the dictionaries
+are preserved in insertion order. The keys of the dictionary must be unique but the values do not have to be.
+We use a dictionary when we want to associate a specific key with a value and allow for fast lookup later one
+(a real life analogy would be a phonebook).</p>
+<h2 id="basics-2"><a class="header" href="#basics-2"><em>Basics</em></a></h2>
+<p>You can instantiate an empty dictionary in two ways:</p>
+<pre><code class="language-python">my_dict = {}
+my_dct = dict()
+</code></pre>
+<p>We can add to a dictionary in two ways:</p>
+<pre><code class="language-python">my_dict['bob'] = 10
+my_dict.update({'alice' : 11})
+
+# `my_dict` is now:
+# { 'bob': 10, 'alice': 11 }
+</code></pre>
+<p>We can retrieve information from a dictionary in two ways:</p>
+<pre><code class="language-python">print(my_dict['bob']) # prints out 10.
+print(my_dict.get('alice')) # prints out 11.
+</code></pre>
+<p>The dictionary keeps track of the last value added to the key:</p>
+<pre><code class="language-python">my_dict['bob'] = 10
+my_dict['bob'] = 12
+
+print(my_dict.get('bob')) # prints out 12.
+</code></pre>
+<p>Now let's take a look at an example problem to understand why dictionaries are a helfpul data structure.</p>
+<h2 id="example-usage"><a class="header" href="#example-usage"><em>Example Usage</em></a></h2>
+<p>We are given an array of earnings in an array like so:</p>
+<pre><code class="language-python">earnings = [('Bob', 1), ('Alice', 2), ('Bob', 5), ('Bob', 10), ('Alice', 11) ...]
+</code></pre>
+<p>And now we want to find the total earnings per individual.</p>
+<p>A solution without dictionaries might look like:</p>
+<pre><code class="language-python">alice = 0
+bob = 0
+for person, earning in earnings:
+    if person == 'Alice':
+        alice += earning
+    elif person == 'Bob':
+        bob += earning
+
+print(alice)
+print(bob)
+</code></pre>
+<p>This might be fine if our array only had values from <code>Bob</code> and <code>Alice</code>. However, what if we added new people?
+We would be forced to add a new conditional for every single person (which obviously isn't a scalable solution).</p>
+<p>Let's look at the solution now using dictionaries.</p>
+<pre><code class="language-python">earning_tracker = {}
+
+for person, earning in earnings:
+    earning_tracker[person] = earning_tracker.get(person, 0) + earning
+
+print(earning_tracker)
+</code></pre>
+<p>With the dictionary, we don't need to worry about each individual person; the dictionary does the tracking and updating for us.</p>
+<blockquote>
+<p><em>Note:</em></p>
+<p>When using <code>get</code>, the second parameter is a default value. The default value is returned if the key (first parameter) does not
+exist in the dictionary.</p>
+</blockquote>
+<h2 id="iteration-2"><a class="header" href="#iteration-2"><em>Iteration</em></a></h2>
+<p>The default iterator for a dictionary returns the <code>keys</code>.</p>
+<pre><code class="language-python">my_dict = {'Alice': 10, 'Bob': 5}
+
+for key in my_dict:
+    print(key) # Prints the key (person name)
+    print(my_dict[key]) # Prints the value (earning)
+</code></pre>
+<p>If we want both the key and the value, we can use the <code>items</code> function. <code>items</code> yields the key and value
+as a tuple.</p>
+<pre><code class="language-python">my_dict = {'Alice': 10, 'Bob': 5}
+
+for key, value in my_dict.items():
+    print(key) # Prints the key (person name)
+    print(value) # Prints the value (earning)
+</code></pre>
+<p>There are other ways to iterate through a dictionary (for example using the <code>keys</code> and <code>values</code> function), but the above
+should be sufficient for this course.</p>
+<h2 id="methods-2"><a class="header" href="#methods-2"><em>Methods</em></a></h2>
+<p>Be familiar with the following set functions:</p>
+<ul>
+<li><code>update</code>: Updates the dictionary based on the dictionary passed in.</li>
+<li><code>get</code>: Gets a specific value by the passed in key (or a default value if the key does not exist), <em>O(1)</em> time complexity.</li>
+<li><code>pop</code>: Removes the key-value pair based on the key passed in, <em>O(1)</em> time complexity</li>
+</ul>
+<p>To check if a key is present in a dictionary, we can use <code>in</code>:</p>
+<pre><code class="language-python">my_dict = {'Alice': 10, 'Bob': 5}
+
+print('Alice' in my_dict) # prints True
+print('John' in my_dict) # prints False
+</code></pre>
+<p>For more information, see: <a href="https://docs.python.org/3/tutorial/datastructures.html">documentation</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="practice-problems"><a class="header" href="#practice-problems">Practice Problems</a></h1>
+<p>The following practice problems may be helpful for your preparation. You can expect the exam questions to be around the same level or a little
+bit harder.</p>
+<p>Some tips:</p>
+<ul>
+<li>Spend around 30 - 50 minutes working on a problem. If you are unable to make any substantial progress, look at a hint or the solution.
+Afterwards, <strong>make sure you write the implementation yourself</strong>.</li>
+<li>If you are able to solve the problem, try to understand other possible solutions.</li>
+</ul>
+<p>For more information, visit: <a href="https://www.cs.utexas.edu/users/mitra/csSpring2023/cs313/notes/StudyGuide1.txt">official study guide</a></p>
+<h2 id="worked-problems"><a class="header" href="#worked-problems"><em>Worked Problems</em></a></h2>
+<p><a href="https://leetcode.com/problems/rotate-string/">LeetCode: Rotate String</a></p>
+<details>
+  <summary>Solution</summary>
+<p>We can generate all rotations of the string by concatenating the two strings together and checking
+if the substring is present.</p>
+<pre><code class="language-python">
+class Solution:
+def rotateString(self, s: str, goal: str) -&gt; bool:
+all_rotations = s \* 2
+return len(s) == len(goal) and goal in all_rotations
+
+</code></pre>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/two-sum/">LeetCode: Two Sum</a></p>
+<details>
+<summary>Solution</summary>
+<p>The important realization here is that each number's complement (target - number) is unique. Using this information,
+we can leverage the dictionary's uniqueness key property to store the complement and the index as a key value pair.</p>
+<pre><code class="language-python">
+class Solution:
+  def twoSum(self, nums: List[int], target: int) -&gt; List[int]:
+
+      mapping = {}
+      for idx, num in enumerate(nums):
+
+          # We found the complement.
+          if num in mapping:
+              return [idx, mapping[num]]
+
+          # Store the complement and its index.
+          mapping[target - num] = idx
+
+</code></pre>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/">LeetCode: Best Time to Buy and Sell Stock</a></p>
+<details>
+  <summary>Solution</summary>
+<p>The most difficult part of this is ensuring that we sell after buying the sock (i.e, the peak must be after the trough).
+To do this, let's consider every potential day as a selling day and keep track of the minimum. This way, we guarantee that
+we've passed the minimum before we sell.</p>
+<pre><code class="language-python">
+class Solution:
+def maxProfit(self, prices: List[int]) -&gt; int:
+max_profit = 0
+
+      # Initialize minimum to Infinity.
+      minimum = math.inf
+
+      for price in prices:
+          minimum = min(price, minimum)
+          max_profit = max(max_profit, price - minimum)
+      return max_profit
+
+</code></pre>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/set-matrix-zeroes/">LeetCode: Set Matrix Zeroes</a></p>
+<details>
+  <summary>Solution</summary>
+<p>We can keep track of the rows and columns to set to 0 by using a set. There is another solution which has
+constant space complexity, but for our exam purposes the below solution will be fine. Submissions will not
+be graded on efficiency for this exam.</p>
+<pre><code class="language-python">
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -&gt; None:
+        &quot;&quot;&quot;
+        Do not return anything, modify matrix in-place instead.
+        &quot;&quot;&quot;
+
+        rows = set()
+        cols = set()
+
+        for i in range(len(matrix)):
+            for j in range(len(matrix[i])):
+                if matrix[i][j] == 0:
+                    rows.add(i)
+                    cols.add(j)
+
+        def set_row(row, matrix):
+            for j in range(len(matrix[row])):
+                matrix[row][j] = 0
+
+        def set_col(col, matrix):
+            for i in range(len(matrix)):
+                matrix[i][col] = 0
+
+        for row in rows:
+            set_row(row, matrix)
+
+        for col in cols:
+            set_col(col, matrix)
+
+</code></pre>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/palindromic-substrings/">LeetCode: Palindromic Substrings</a></p>
+<details>
+  <summary>Solution</summary>
+<p>A palindrome is symmetrical. Knowing this, we can consider every potential starting midpoint for the palindrome
+and expand outwards to count the number of valid palindromes. We'll also need to handle an edge case for even-lengthed
+palindromes.</p>
+<pre><code class="language-python">
+class Solution:
+    def countSubstrings(self, s: str) -&gt; int:
+
+        size = len(s)
+
+        def expand_outwards(s, left, right):
+
+            count = 0
+
+            # Expand outwards while left and right pointers are the same character.
+            while (left &gt;= 0 and right &lt; len(s) and s[left] == s[right]):
+                left -= 1
+                right += 1
+                count += 1
+
+            return count
+
+        total = 0
+        for center in range(size):
+
+            # For odd-lengthed palindromes.
+            total += expand_outwards(s, center, center)
+
+            # For even-lengthed palindromes.
+            total += expand_outwards(s, center - 1, center)
+        return total
+
+</code></pre>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/find-winner-on-a-tic-tac-toe-game/">LeetCode: Find Winner on a Tic Tac Toe Game</a></p>
+<details>
+  <summary>Solution</summary>
+<p>There are many possible solutions to this problem. A brute force approach is completely acceptable. The below
+approach is a more optimized/clean solution. The main idea is to keep track of all 8 possible win conditions
+for each player (3 rows + 3 columns + 2 diagonals). The win conditions are kept track of using a counter.
+Whenever a counter reaches 3, that player has won.</p>
+<pre><code class="language-python">
+class Solution:
+    def tictactoe(self, moves: List[List[int]]) -&gt; str:
+
+        # Keep track of all 8 possible win conditions for each
+        # player.
+        winner_a = [0] * 8
+        winner_b = [0] * 8
+
+        # Iterate through the moves.
+        for idx, pair in enumerate(moves):
+
+            # Determine who the current player is.
+            arr = winner_a if idx % 2 == 0 else winner_b
+            x, y = pair
+
+            # Increment row 'win' counter.
+            arr[x] += 1
+
+            # Increment col 'win' counter.
+            arr[y + 3] += 1
+
+            # Increment diagonal 'win' counter.
+            if x == y:
+                arr[6] += 1
+
+            # Increment anti-diagonal 'win' counter.
+            if x == 2 - y:
+                arr[7] += 1
+
+        # Check all win conditions.
+        for i in range(8):
+            if winner_a[i] == 3:
+                return &quot;A&quot;
+            if winner_b[i] == 3:
+                return &quot;B&quot;
+
+        return &quot;Draw&quot; if len(moves) == 9 else &quot;Pending&quot;
+
+</code></pre>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/surface-area-of-3d-shapes/">LeetCode: Surface Area of 3D Shapes</a></p>
+<details>
+  <summary>Solution</summary>
+<p>Consider each stack of cubes as a standalone stack, and then subtract the sides that are covered by
+the surrounding stacks.</p>
+<pre><code class="language-python">
+class Solution:
+    def surfaceArea(self, grid: List[List[int]]) -&gt; int:
+
+        # Function for checking if in bounds.
+        in_bounds = lambda r, c: 0 &lt;= r &lt; len(grid) and 0 &lt;= c &lt; len(grid[0])
+
+        total = 0
+
+        # Directions for left, up, right, and down.
+        dirs = [
+            (1, 0),
+            (0, 1),
+            (-1, 0),
+            (0, -1)
+        ]
+
+        total = 0
+        for i in range(len(grid)):
+            for j in range(len(grid[i])):
+
+                # Ignore if there is a hole here.
+                if grid[i][j] == 0:
+                    continue
+
+                # 2 for the top-down faces, 4 for the lateral sides.
+                sa = 2 + 4 * grid[i][j]
+
+                for delta_x, delta_y in dirs:
+                    r = i + delta_x
+                    c = j + delta_y
+
+                    if not in_bounds(r, c):
+                        continue
+
+                    # Subtract neighboring faces.
+                    sa -= min(grid[r][c], grid[i][j])
+                total += sa
+
+        return total
+
+</code></pre>
+</details>
+<h2 id="additional-problems"><a class="header" href="#additional-problems"><em>Additional Problems</em></a></h2>
+<ul>
+<li><a href="https://naq21.kattis.com/problems/eyeofsauron">Kattis: Eye of Sauron</a></li>
+<li><a href="https://leetcode.com/problems/insert-interval/">LeetCode: Insert Interval</a></li>
+<li><a href="https://leetcode.com/problems/verifying-an-alien-dictionary/">LeetCode: Verifying an Alien Dictionary</a></li>
+<li><a href="https://leetcode.com/problems/subrectangle-queries/">LeetCode: Subrectangle Queries</a></li>
+<li><a href="https://codeforces.com/gym/103270/problem/F">Codeforces: Cute Pets</a></li>
+</ul>
+<pre><code></code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="algorithms"><a class="header" href="#algorithms">Algorithms</a></h1>
+<p>The following algorithms are important for the upcoming exam. Be familiar with their implementation and why the algorithm works.
+For certain questions, you may need to adapt the algorithm to fit the specifications of the problem.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sorts"><a class="header" href="#sorts">Sorts</a></h1>
+<p>Sorting algorithms rearrange a list of elements based on a comparator. There exists a variety of sorting algorithms, some popular
+ones include:</p>
+<ul>
+<li>Selection Sort</li>
+<li>Insertion Sort</li>
+<li>Quick Sort</li>
+<li>Merge Sort</li>
+<li>Counting Sort</li>
+<li>Radix Sort</li>
+</ul>
+<p>Here's a <a href="https://www.youtube.com/watch?v=kPRA0W1kECg">cool video</a> visualizing the different kinds of sorting algorithms.</p>
+<p>For the exam, you should be familiar with Selection Sort, Insertion Sort, and the merging step of Merge Sort.</p>
+<h2 id="selection-sort"><a class="header" href="#selection-sort"><em>Selection Sort</em></a></h2>
+<p><strong>Main Idea</strong>: Select the smallest element on each iteration and place it towards the beginning.</p>
+<p><strong>Sample Implementation</strong>:</p>
+<pre><code class="language-python">
+def selection_sort(array: List[int]) -&gt; None:
+    &quot;&quot;&quot;
+        Sorts the `array` in place in ascending order.
+    &quot;&quot;&quot;
+
+    size = len(array)
+
+    for pointer_one in range(size):
+
+        min_idx = pointer_one
+
+        for pointer_two in range(pointer_one + 1, size):
+            
+            # Found something that is smaller, update `min_idx`.
+            if array[min_idx] &lt; array[pointer_two]:
+                min_idx = pointer_two
+        
+        # Put minimum element in correct place.
+        array[pointer_one], array[min_idx] = array[min_idx], array[pointer_one]
+
+</code></pre>
+<p><a href="https://www.programiz.com/dsa/selection-sort">Source</a></p>
+<p><strong>Time Complexity</strong>: O(n<sup>2</sup>)</p>
+<h2 id="insertion-sort"><a class="header" href="#insertion-sort"><em>Insertion Sort</em></a></h2>
+<p><strong>Main Idea</strong>: On each iteration, expand the sorted block by placing an unsorted element in its appropriate place.</p>
+<p><strong>Sample Implementation</strong>:</p>
+<pre><code class="language-python">
+def insertion_sort(array: List[int]) -&gt; None:
+    &quot;&quot;&quot;
+        Sorts `array` in ascending order in place.
+    &quot;&quot;&quot;
+
+    for step in range(1, len(array)):
+        key = array[step]
+        j = step - 1
+        
+        # Compare key with each element on the left of it until an element smaller than it is found
+        # For descending order, change key&lt;array[j] to key&gt;array[j].        
+        while j &gt;= 0 and key &lt; array[j]:
+            array[j + 1] = array[j]
+            j = j - 1
+        
+        # Place key at after the element just smaller than it.
+        array[j + 1] = key
+
+</code></pre>
+<p><a href="https://www.programiz.com/dsa/insertion-sort">Source</a></p>
+<p><strong>Time Complexity</strong>: O(n<sup>2</sup>)</p>
+<h2 id="merge-sort"><a class="header" href="#merge-sort"><em>Merge Sort</em></a></h2>
+<p><strong>Main Idea</strong>: Split list in half, sort on those halves and merge.</p>
+<p><strong>Sample Implementation (Merging Step)</strong>:</p>
+<pre><code class="language-python">
+def merge_halves(half_one: List[int], half_two: List[int]) -&gt; List[int]:
+    &quot;&quot;&quot;
+        Merges two halves of a list (in ascending order). Returns
+        a new list.
+    &quot;&quot;&quot;
+
+    h_one_idx = 0
+    h_two_idx = 0
+    ret = []
+
+    # Iterate until we reach the end of one of the lists
+    while h_one_idx &lt; len(half_one) and h_two_idx &lt; len(half_two):
+        elem_one = half_one[h_one_idx]
+        elem_two = half_two[h_two_idx]
+
+        # Case 1: element one is smaller,
+        # add it to the list and advance
+        # the pointer for list one.
+        if elem_one &lt; elem_two:
+            ret.append(elem_one)
+            h_one_idx += 1
+        # Case 2: element two is smaller,
+        # do the same for list two.
+        else:
+            ret.append(elem_two)
+            h_two_idx += 1
+
+    # In case the lists do not have the same length.
+    def get_leftover(leftover_list, idx, ret):
+        while idx &lt; len(leftover_list):
+            ret.append(leftover_list[idx])
+            idx += 1
+    
+    get_leftover(half_one, h_one_idx, ret)
+    get_leftover(half_two, h_two_idx, ret)
+
+    return ret
+
+</code></pre>
+<p><strong>Time Complexity</strong>: O(nlogn) for entire sort, O(n) for merging step</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="binary-search"><a class="header" href="#binary-search">Binary Search</a></h1>
+<p>Binary Search is one of the most important algorithsm in computer science. Given a sorted search space, we
+can find our desired element in <em>O(log n)</em> time.</p>
+<h2 id="sample-implementation"><a class="header" href="#sample-implementation"><em>Sample Implementation</em></a></h2>
+<pre><code class="language-python">
+def binary_search(array: List[int], find: int) -&gt; bool:
+    &quot;&quot;&quot;
+        Searches on `array` for the specified element `find`.
+        Requires that `array` be sorted beforehand.
+
+        Returns True if found, False otherwise.
+    &quot;&quot;&quot;
+
+    # Initializing our pointers to the start and end of the array.
+    low = 0
+    high = len(array) - 1
+
+    while low &lt;= high:
+
+        mid = low + (high - low) // 2
+
+        # Found our element, return.
+        if array[mid] == x:
+            return True
+
+        # Construct search space since we know
+        # the list is sorted.
+        if array[mid] &lt; x:
+            low = mid + 1
+        else:
+            high = mid - 1
+
+        return False
+
+</code></pre>
+<blockquote>
+<p><em>Note</em>:</p>
+<p>There's a famous <a href="https://ai.googleblog.com/2006/06/extra-extra-read-all-about-it-nearly.html">overflow bug</a> in the original binary 
+search implementation with <code>(high + low) // 2</code>. This isn't as big of an issue in Python as it is in C or C++, but it is now generally
+accepted that the correct calculation for mid is <code>low + (high - low) // 2</code>.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="practice-problems-1"><a class="header" href="#practice-problems-1">Practice Problems</a></h1>
+<p>The following practice problems may be helpful for your preparation. You can expect the exam questions to be around the same level or a little
+bit harder.</p>
+<p>Some tips:</p>
+<ul>
+<li>Spend around 30 - 50 minutes working on a problem. If you are unable to make any substantial progress, look at a hint or the solution.
+Afterwards, <strong>make sure you write the implementation yourself</strong>.</li>
+<li>If you are able to solve the problem, try to understand other possible solutions.</li>
+</ul>
+<p>For more information, visit: <a href="https://www.cs.utexas.edu/users/mitra/csSpring2022/cs313/notes/StudyGuide2.txt">official study guide</a></p>
+<h2 id="worked-problems-1"><a class="header" href="#worked-problems-1"><em>Worked Problems</em></a></h2>
+<p><a href="https://leetcode.com/problems/nim-game/">LeetCode: Nim</a></p>
+<details>
+  <summary>Solution</summary>
+<p>Let's start at the simplest cases and see if we can find a pattern:</p>
+<ul>
+<li>n = 1, first player wins</li>
+<li>n = 2, first player wins</li>
+<li>n = 3,  first player wins</li>
+</ul>
+<p>For n = 4, let's consider all the cases:</p>
+<ul>
+<li>picks 1 =&gt; n = 3, second player wins by taking 3</li>
+<li>picks 2 =&gt; n = 2, second player wins by taking 2</li>
+<li>picks 3 =&gt; n = 1, second player wins by taking 1</li>
+</ul>
+<p>We can see that for each move, we have a new problem with a different number of n
+and the player's positions swapping.</p>
+<p>We might initially come up with a dynamic programming solution like this:</p>
+<pre><code class="language-python">class Solution:
+  def canWinNim(self, n: int) -&gt; bool:
+      # if n = 1, 2, 3, we can win immediately.
+      if n &lt; 4:
+          return True
+
+      # Invariant: if dp[i] is True, a player can win with i stones no matter what.
+      # initialize from 0 to n, ignore the first 0.
+      dp = [None for i in range(n + 1)]
+
+      # base cases:
+      for i in range(1, 4):
+          dp[i] = True
+      dp[4] = False
+
+      # Consider all cases from 4 to n.
+      for i in range(5, n + 1):
+          # Loop back to consider cases for taking 1 - 3 stones
+          for j in range(1, 4):
+              # If we take j stones, the other player will have i - j stones.
+              if not dp[i - j]:
+                  # If there exists a j such that other player cannot winn, then this
+                  # player can win.
+                  dp[i] = True
+                  break
+          else:
+              # for loop terminated without breaking, meaning it did not find a
+              # possible win condition. It is impossible to win with i stones left.
+              dp[i] = False
+
+      return dp[n]
+</code></pre>
+<p>Can we do better? If you manually evaluted more points for n (or examined the contents of the dynamic programming array), you'll
+find something interesting. Every 4th element is false (meaning it's impossible for the first player to win).</p>
+<p>We can shorten this to a simple check:</p>
+<pre><code class="language-python">class Solution:
+  def canWinNim(self, n: int) -&gt; bool:
+      return n % 4 != 0
+</code></pre>
+<p>Follow up: can you prove this using induction?</p>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/search-a-2d-matrix/">LeetCode: Search a 2D Matrix</a></p>
+<details>
+  <summary>Solution</summary>
+<p>The problem specifications hints towards a binary search. However, since this a matrix, we must modify our approach.
+We can think of the matrix as a large array with the rows stacked on top of each other. Knowing this, we can set our
+<code>low</code> and <code>high</code> to the appropriate bounds: <code>0</code> and <code>rows * columns - 1</code>, respectively. To get the row, we can use
+<code>mid // columns</code>. To get the column we can use <code>mid % columns</code>.</p>
+<pre><code class="language-python">class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -&gt; bool:
+        rows = len(matrix)
+        cols = len(matrix[0])
+        low = 0
+        high = rows * cols - 1
+        while low &lt;= high:
+            mid = low + (high - low) // 2
+            row = mid // cols
+            col = mid % cols
+            val = matrix[row][col]
+            if val == target:
+                return True
+            if val &lt; target:
+                low = mid + 1
+            else:
+                high = mid - 1
+        return False
+</code></pre>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/">LeetCode: Remove Nth Node from End of List</a></p>
+<details>
+  <summary>Solution</summary>
+<p>In a singly linked list, only the forward connections are stored in the node. To get the backwards connections (or the previous node), we can
+use recursion. The back/previous connections are stored implicitly on the stack.</p>
+<p>In the solution below, the helper function returns two values every time it's called: the new next node for the previous node and the previous
+node's n-th position from the end.</p>
+<p>On every function call, we update the current node's next. The current node's next is unchanged if the next node should not have been deleted.</p>
+<p>The time complexity is O(n) because we do one full traversal of the linked list.</p>
+<pre><code class="language-python">
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+  def removeNthFromEnd(self, head: ListNode, n: int) -&gt; ListNode:
+
+      def helper(node, place_to_remove):
+
+          # reached the end, let the previous node
+          # know that it's first
+          if not node:
+              return None, 1
+
+          node_next, place = helper(node.next, place_to_remove)
+
+          # update connection if necessary
+          node.next = node_next
+
+          # delete this node by returning this node's next to be updated
+          updated_node = node.next if place == place_to_remove else node
+
+          return updated_node, place + 1
+
+      return helper(head, n)[0]
+
+</code></pre>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/valid-parentheses/">LeetCode: Valid Parantheses</a></p>
+<details>
+<summary>Solution</summary>
+<p>Again, with problems like this it is good to write out some manual cases and manually identify if they are valid
+(while doing this look for ways to formalize the patterns you observe into code):</p>
+<ul>
+<li><code>((())) =&gt; OK</code></li>
+<li><code>((((() =&gt; WRONG</code></li>
+<li><code>{(}) =&gt; WRONG</code></li>
+<li><code>(())()) =&gt; WRONG</code></li>
+<li><code>)() =&gt; WRONG</code></li>
+</ul>
+<p>Some observations:</p>
+<ul>
+<li>Closing brackets must match with the opening brackets.</li>
+<li>Closing bracket pairs with the closest open bracket to its left.</li>
+<li>Each closing bracket must have an opening bracket to pair with.</li>
+</ul>
+<p>Knowing this, we want to use a stack because we are concerned with the ordering of the open parantheses -- more specifically,
+the most recent open parantheses we've found before.</p>
+<p>In our algorithm, whenever we come across an open parantheses, we add it to our stack of unclosed parantheses. Whenever
+we come across a closing parantheses, we want to check if the most recent open parantheses that we added matches it,
+if it does pop the open paranthese from the stack (it's no longer unclosed).</p>
+<p>The string is valid if our stack is empty at the end. This means we've cloesd all of our unopened parantheses.</p>
+<pre><code class="language-python">
+class Solution:
+    def isValid(self, s: str) -&gt; bool:
+
+
+        stack = []
+        close_to_open = { ')' : '(', ']' : '[', '}' : '{'}
+
+        for char in s:
+            # Must be an opening bracket
+            if char not in close_to_open:
+                stack.append(char)
+
+            # Closing bracket
+            else:
+                # No opening bracket to match.
+                if not stack:
+                    return False
+
+                # Opening bracket exists but doesn't match
+                if close_to_open[char] != stack.pop():
+                    return False
+
+        return not stack
+
+</code></pre>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/letter-combinations-of-a-phone-number/">LeetCode: Letter Combinations Phone Number</a></p>
+<details>
+  <summary>Solution</summary>
+<p>Create a mapping of the digits to all the possible letters. Iterate through all of them to consider all possibilities.
+Add to the auxiliary data structure, make the recursive call, then backtrack by popping.</p>
+<pre><code class="language-python">
+class Solution:
+    def letterCombinations(self, digits: str) -&gt; List[str]:
+        saved = {
+            '1': [],
+            '2': ['a', 'b', 'c'],
+            '3': ['d', 'e', 'f'],
+            '4': ['g', 'h', 'i'],
+            '5': ['j', 'k', 'l'],
+            '6': ['m', 'n', 'o'],
+            '7': ['p', 'q', 'r', 's'],
+            '8': ['t', 'u', 'v'],
+            '9': ['w', 'x', 'y', 'z']
+        }
+
+        # edge case
+        if not digits:
+            return []
+
+        def helper(result, digits, index, acc):
+            if index == len(digits):
+                result.append(''.join(acc))
+                return
+
+            combos = saved[digits[index]]
+            for combo in combos:
+                acc.append(combo)
+                helper(result, digits, index + 1, acc)
+                acc.pop()
+
+        builder = []
+        helper(builder, digits, 0, [])
+        return builder
+
+</code></pre>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/house-robber/">LeetCode: House Robber</a></p>
+<details>
+  <summary>Solution</summary>
+<p>At every index, we have two choices: Rob this house or don't. If we rob this house, we have a smaller
+subproblem that excludes the nearby houses. If we don't, we have a smaller subproblem that excludes
+the current house. At first, a brute force approach might seem appropriate, but let's see if we can
+optimize this even further with memoization.</p>
+<p>Let's define <code>DP[i]</code> as the maxmimum money we can rob by considering all houses from indices 0 to i.
+Our recurrence can be something like: <code>DP[i + 1] = max(DP[i], DP[i - 1] + money[i])</code>. At index <code>i + 1</code>,
+we can either pick this house and add the optimal subproblem of <code>i - 1</code> or we can exclude this house
+and pick the optimal subproblem of <code>i</code>.</p>
+<pre><code class="language-python">
+class Solution:
+    def rob(self, nums: List[int]) -&gt; int:
+        if len(nums) == 1:
+            return nums[0]
+
+        dp = [0] * len(nums)
+
+        # base cases
+        dp[0] = nums[0]
+        dp[1] = max(dp[0], nums[1])
+
+        for i in range(2, len(nums)):
+            dp[i] = max(dp[i-2] + nums[i], dp[i-1])
+
+        # last index considers all the homes
+        return dp[-1]
+
+</code></pre>
+</details>
+<h2 id="additional-problems-1"><a class="header" href="#additional-problems-1"><em>Additional Problems</em></a></h2>
+<ul>
+<li><a href="https://leetcode.com/problems/linked-list-cycle/">Leetcode: Linked List Cycle</a></li>
+<li><a href="https://leetcode.com/problems/reverse-linked-list/">Leetcode: Reverse Linked List</a></li>
+<li><a href="https://open.kattis.com/contests/wf6xh5/problems/longincsubseq">Kattis: Longest Increasing Subsequence [Dynamic Programming]</a></li>
+<li><a href="https://leetcode.com/problems/restore-ip-addresses/">LeetCode: Restore IP Addresses [Recursive Backtracking]</a></li>
+<li><a href="https://leetcode.com/problems/ternary-expression-parser/">LeetCode: Ternary Expression Parser [Stacks]</a></li>
+<li><a href="https://leetcode.com/problems/search-insert-position/">LeetCode: Search Insert Position</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="practice-problems-2"><a class="header" href="#practice-problems-2">Practice Problems</a></h1>
+<p>The following practice problems may be helpful for your preparation. You can expect the exam questions to be around the same level or a little
+bit harder.</p>
+<p>Some tips:</p>
+<ul>
+<li>Spend around 30 - 50 minutes working on a problem. If you are unable to make any substantial progress, look at a hint or the solution.
+Afterwards, <strong>make sure you write the implementation yourself</strong>.</li>
+<li>If you are able to solve the problem, try to understand other possible solutions.</li>
+</ul>
+<p>For more information, visit: <a href="https://www.cs.utexas.edu/users/mitra/csSpring2022/cs313/notes/StudyGuide3.txt">official study guide</a></p>
+<blockquote>
+<p><em>Note</em>:</p>
+<p>The 3rd exam will be structured differently from the other two. There will be a short answer section in addition to the coding portion.
+For the coding portion, choose three out of the five problems to solve.
+The short answer section will cover a simulation of a graph algorithm discussed in class (Prim's, Dijkstra's, etc...) as well
+as a tabulation DP problem.</p>
+</blockquote>
+<h2 id="worked-problems-2"><a class="header" href="#worked-problems-2"><em>Worked Problems</em></a></h2>
+<p><a href="https://leetcode.com/problems/count-good-nodes-in-binary-tree/">LeetCode: Count Good Nodes in Binary Tree [Trees]</a></p>
+<details>
+  <summary>Solution</summary>
+<p>An important observation is that the path from the root to any node in the tree is unique (due to the fact that
+every node has exactly one parent). We can traverse the tree using DFS and build our path accordingly. We don't
+actually need to store the entire path since we are only concerned about the maximum along the path.</p>
+<p>A possible recursive solution:</p>
+<pre><code class="language-python">class Solution:
+    def goodNodes(self, root: TreeNode) -&gt; int:
+        def helper(node, maxi):
+            &quot;&quot;&quot;
+                Returns the number of good nodes for the subtree at `node`.
+
+                `node`: root of the subtree to evaluate
+                `maxi`: the maximum value from the root to the parent of `node`
+                        (inclusive).
+            &quot;&quot;&quot;
+            # null node, return 0 for no good nodes.
+            if not node:
+                return 0
+
+            count = 0
+
+            # check if this node is good.
+            maxi = max(maxi, node.val)
+            if maxi == node.val:
+                count += 1
+            
+            # add contributions from left and right.
+            count += helper(node.left, maxi)
+            count += helper(node.right, maxi)
+            
+            return count
+        return helper(root, -math.inf)
+
+</code></pre>
+<p>A possible iterative solution (same algorithm):</p>
+<pre><code class="language-python">
+class Solution:
+    def goodNodes(self, root: TreeNode) -&gt; int:
+        
+        count = 0
+        stack = []
+        
+        stack.append((root, -math.inf))
+        
+        while stack:
+            cur, maxi = stack.pop()
+            
+            if not cur:
+                continue
+            
+            maxi = max(maxi, cur.val)
+            if maxi == cur.val:
+                count += 1
+            
+            stack.append((cur.left, maxi))
+            stack.append((cur.right, maxi))
+        
+        return count
+
+</code></pre>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/keys-and-rooms/">LeetCode: Keys and Rooms [Graphs]</a></p>
+<details>
+  <summary>Solution</summary>
+<p>The problem is essentially asking if the graph is connected. Using DFS or BFS from the starting room
+(room 0), we can visit all the rooms reachable. Once we've completed our graph traversal, we can check
+if we've reached every room by comparing the length of the visited set to the number of rooms.</p>
+<p>The <code>deque</code> class used here is a double-ended queue. We use this class for faster append and pop operations.
+<code>popLeft()</code> is equivalent to <code>pop(0)</code> in that they both pop the first element from the queue, however, 
+<code>pop(0)</code> executes in N<sup>2</sup> runtime complexity due to the shifting of elements whereas <code>popLeft()</code>
+happens in constant time.</p>
+<pre><code class="language-python">
+from collections import deque
+
+class Solution:
+  def canVisitAllRooms(self, rooms: List[List[int]]) -&gt; bool:
+      
+      # use queue for breadth first search.
+      queue = deque()
+      queue.append(0)
+
+      # keep track of visited rooms.
+      visited = set()
+      while queue:
+          cur = queue.popleft()
+
+          # already visited, ignore.
+          if cur in visited:
+              continue
+          visited.add(cur)
+          
+          room = rooms[cur]
+
+          # add rooms reachable from here.
+          for key in room:
+              queue.append(key)
+      
+      return len(visited) == len(rooms)
+
+</code></pre>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/maximum-subarray/">LeetCode: Maximum Subarray [Dynamic Programming]</a></p>
+<details>
+<summary>Solution</summary>
+<p>The brute force solution solves this in quadratic time (consider every single
+possible contiguous subarray). We can speed this up using dynamic programming/memoization:
+rather than recomputing the sums every time, we can store it on every iteration. Additionally,
+the problem is only asking for the maximum sum, so we don't need to store every sum
+for every possible pair of start/end indices.</p>
+<p>Let's define <code>DP[i]</code> as the maximum subarray sum ending at index <code>i</code> (inclusive). When we
+consider the <code>i + 1</code>th index, we have two options:</p>
+<ol>
+<li>Include the previous maximum sum (we can guarantee it is contiguous because it ends on the index before).</li>
+<li>Don't include the previous maxmium sum, only include the current number.</li>
+</ol>
+<p>Now we can find the maximum subarray sum in linear time.</p>
+<p>A potential solution:</p>
+<pre><code class="language-python">
+class Solution:
+    def maxSubArray(self, nums: List[int]) -&gt; int:
+        
+        dp = [0] * len(nums)
+        
+        best = -math.inf
+        for i, num in enumerate(nums):
+            if i == 0:
+                dp[i] = num
+            else:
+                dp[i] = max(nums[i], dp[i - 1] + nums[i])
+            best = max(dp[i], best)
+        return best
+
+</code></pre>
+<p>This algorithm is known as Kadane's algorithm.</p>
+<p>Follow-up: can you optimize this to be O(1) in space?</p>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/house-robber-iii/">LeetCode: House Robber III [Trees + Dynamic Programming]</a></p>
+<details>
+  <summary>Solution</summary>
+<p>At a single node we have two options:</p>
+<ol>
+<li>Rob the node, don't rob the children of the node.</li>
+<li>Don't rob the node, consider robbing the children of the node.</li>
+</ol>
+<p>For each node, we memoize the best/maxmium profit gained from each of the two conditions (with and without)
+and then utilize the recursive substructure of the tree to propogate the values up to the root.</p>
+<p>The trickiest part is in the second case where we don't rob the code -- we need to consider all four combinations
+between the maximums including the left and the right and the maximums not including the left and the right. It
+is not always optimal to rob the children of the node in the second case.</p>
+<p>See comments in the code for more information.</p>
+<pre><code class="language-python">
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+class Solution:
+    def rob(self, root: Optional[TreeNode]) -&gt; int:
+        
+        def helper(node):
+            if node is None:
+                return 0, 0
+            
+            with_l, without_l = helper(node.left)
+            with_r, without_r = helper(node.right)
+            
+            # if we rob this house, we have to pick the ones without.
+            with_node = node.val + without_l + without_r
+            
+            # all possible combinations of with_l, without_l and with_r, without_r
+            # these are all possible if we don't rob the current node.
+            possibles = [x + y for x in [with_l, without_l] for y in [with_r, without_r]]
+            
+            return with_node, max(possibles)
+        
+        
+        return max(helper(root))
+
+</code></pre>
+</details>
+<br/>
+<p><a href="https://open.kattis.com/problems/knightjump">Kattis: Knight Jump [Graphs]</a></p>
+<details>
+  <summary>Solution</summary>
+<p>We can model this problem like a graph. The nodes are the squares of the board. An edge exists between
+two nodes if a knight can jump from one node to another. We can use either DFS or BFS to determine if
+the target square is reachable. However, the problem stipulates that we need to find the minimum number
+of moves.</p>
+<p>In order to find the minimum, we must use BFS. Remember that from a starting vertex, BFS finds the
+shortest unweighted path to every other connected vertex. To return the number of moves required,
+we can store the distance as part of the BFS state along with the node.</p>
+<pre><code class="language-python">
+from collections import deque
+
+# single integer
+inp = lambda: int(input())
+
+# string list
+strl = lambda: list(input().strip())
+
+# in bounds check for 2d array
+in_bounds = lambda x, y, grid: x &gt;= 0 and x &lt; len(grid) and y &gt;= 0 and y &lt; len(grid[0])
+
+
+def valid(coord, board):
+    &quot;&quot;&quot; Checks if coordinate is valid. &quot;&quot;&quot;
+    return in_bounds(*coord, board) and board[coord[0]][coord[1]] != '#'
+
+def solve(board):
+    start = None
+
+    # finding the start.
+    for i, row in enumerate(board):
+        for j, elem in enumerate(row):
+            if elem == 'K':
+                start = (i, j)
+
+    
+    assert start is not None
+
+    queue = deque([(start, 0)])
+    visited = set()
+
+    # all different knight movements.
+    movement = [
+        (2, 1),
+        (2, -1),
+        (-2, 1),
+        (-2, -1),
+        (1, 2),
+        (1, -2),
+        (-1, 2),
+        (-1, -2)
+    ]
+
+    # perform bfs.
+    while queue:
+        cur, dist = queue.popleft()
+
+        # reached the target, return `dist` immediately.
+        if cur[0] == 0 and cur[1] == 0:
+            return dist
+
+        # already visited or not a valid square.
+        if cur in visited or not valid(cur, board):
+            continue
+
+        visited.add(cur)
+
+        # add next possible moves.
+        for move in movement:
+            delta = (
+                (cur[0] + move[0], cur[1] + move[1]),
+                dist + 1
+            )
+            
+            queue.append(delta)
+    
+    return -1
+
+if __name__ == '__main__':
+    
+    n = inp()
+    board = []
+    
+    for _ in range(n):
+        board.append(strl())
+    
+    print(solve(board))
+
+</code></pre>
+</details>
+</br>
+<p><a href="https://leetcode.com/problems/decode-ways/">LeetCode: Decode Ways [Dynamic Programming]</a></p>
+<details>
+  <summary>Solution</summary>
+<p>The first important observation is that the encoded numbers are at most two digits. That means for a given
+index <code>i</code>, we need to consider the single digit number (character at <code>i</code>) as well as the double digit
+number (substring <code>i - 1</code> to <code>i</code>).</p>
+<p>Once we've fixed a single number, we need to consider the number of ways to decode for the remaining substring.
+A possible recursive/brute force solution might add the following two numbers together for string <code>s</code>.</p>
+<ol>
+<li>Fixed single digit number at <code>i</code>: <code>decode_ways(s[:i])</code></li>
+<li>Fixed double digit number <code>[i-1:i+1]</code>: <code>decode_ways([s:i-1])</code></li>
+</ol>
+<p>Notice that we are always recomputing the decode ways for the beginning of the string, we can use bottom-up memoization
+to speed up our algorithm.</p>
+<pre><code class="language-python">
+class Solution:
+    def numDecodings(self, s: str) -&gt; int:
+        
+        # all valid encodings.
+        valid_numbers = set([str(i) for i in range(1, 27)])
+        
+        # dp[i] stores number of ways to decode for substring up to index i
+        dp = [0] * (len(s) + 1)
+        
+        # base cases
+        dp[0] = 1        
+        dp[1] = 1 if s[0] in valid_numbers else 0
+
+        if len(s) == 1:
+            return dp[1]
+        
+        for i in range(2, len(s) + 1):
+            
+            # separate index for string since i is exclusive
+            str_idx = i - 1
+            
+            # consider the case where we fix a single digit number
+            dp[i] += dp[i - 1] if s[str_idx] in valid_numbers else 0
+
+            # consider the case where we fix a double digit number
+            dp[i] += dp[i - 2] if s[str_idx-1:str_idx+1] in valid_numbers else 0
+        
+        return dp[len(s)]
+
+</code></pre>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/validate-binary-search-tree/">LeetCode: Validate BST [Trees]</a></p>
+<details>
+  <summary>Solution</summary>
+<p>An important binary search tree property is that the entire subtree of the right must be greater than the root node and the
+entire subtree of the left must be less than the root node. It's not enough to check the children in order to validate the
+BST.</p>
+<p>When inserting a node into the BST, there is only one place where the node can be placed (according to our BST algorithm).
+Intuitively, each node acts as a range check for the node being inserted. We can use this same principle in order
+to validate the BST.</p>
+<pre><code class="language-python">
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+class Solution:
+    def isValidBST(self, root: TreeNode) -&gt; bool:
+        return self.helper(root, -math.inf, math.inf)
+
+    def helper(self, node: TreeNode, min_b: int, max_b: int) -&gt; bool:
+        if node is None:
+            return True
+
+        # falls within proper range
+        ok = node.val &gt;= min_b and node.val &lt;= max_b
+        
+        # check left and right, left max is node.val - 1, right min is node.val + 1
+        return ok and self.helper(node.left, min_b, node.val - 1) and self.helper(node.right, node.val + 1, max_b)
+
+</code></pre>
+</details>
+<h2 id="additional-problems-2"><a class="header" href="#additional-problems-2"><em>Additional Problems</em></a></h2>
+<ul>
+<li><a href="https://leetcode.com/problems/maximum-sum-circular-subarray/">Leetcode: Maximum Sum Circular Subarray [Dynamic Programming]</a></li>
+<li><a href="https://leetcode.com/problems/invert-binary-tree/">Leetcode: Invert Binary Tree [Trees]</a></li>
+<li><a href="https://leetcode.com/problems/is-graph-bipartite/">LeetCode: Is Graph Bipartite [Graph]</a></li>
+<li><a href="https://codeforces.com/problemset/problem/1669/G">Codeforces: Fall Down [Graph]</a></li>
+<li><a href="https://open.kattis.com/problems/scenes">Kattis: Mountain Scenes [Dynamic Programming]</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+    </body>
+</html>

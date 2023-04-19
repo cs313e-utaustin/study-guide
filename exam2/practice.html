@@ -1,0 +1,449 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js ayu">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Practice Problems - Study Material</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Exam 1</li><li class="chapter-item expanded "><a href="../exam1/oop.html"><strong aria-hidden="true">1.</strong> OOP</a></li><li class="chapter-item expanded "><a href="../exam1/ds.html"><strong aria-hidden="true">2.</strong> Data Structures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../exam1/ds/list.html"><strong aria-hidden="true">2.1.</strong> Lists</a></li><li class="chapter-item expanded "><a href="../exam1/ds/sets.html"><strong aria-hidden="true">2.2.</strong> Sets</a></li><li class="chapter-item expanded "><a href="../exam1/ds/dictionaries.html"><strong aria-hidden="true">2.3.</strong> Dictionaries</a></li></ol></li><li class="chapter-item expanded "><a href="../exam1/practice.html"><strong aria-hidden="true">3.</strong> Practice Problems</a></li><li class="chapter-item expanded affix "><li class="part-title">Exam 2</li><li class="chapter-item expanded "><a href="../exam1/algo.html"><strong aria-hidden="true">4.</strong> Algorithms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../exam1/algo/sorts.html"><strong aria-hidden="true">4.1.</strong> Sorts</a></li><li class="chapter-item expanded "><a href="../exam1/algo/binsearch.html"><strong aria-hidden="true">4.2.</strong> Binary Search</a></li></ol></li><li class="chapter-item expanded "><a href="../exam2/practice.html" class="active"><strong aria-hidden="true">5.</strong> Practice Problems</a></li><li class="chapter-item expanded affix "><li class="part-title">Exam 3</li><li class="chapter-item expanded "><a href="../exam3/practice.html"><strong aria-hidden="true">6.</strong> Practice Problems</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Study Material</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="practice-problems"><a class="header" href="#practice-problems">Practice Problems</a></h1>
+<p>The following practice problems may be helpful for your preparation. You can expect the exam questions to be around the same level or a little
+bit harder.</p>
+<p>Some tips:</p>
+<ul>
+<li>Spend around 30 - 50 minutes working on a problem. If you are unable to make any substantial progress, look at a hint or the solution.
+Afterwards, <strong>make sure you write the implementation yourself</strong>.</li>
+<li>If you are able to solve the problem, try to understand other possible solutions.</li>
+</ul>
+<p>For more information, visit: <a href="https://www.cs.utexas.edu/users/mitra/csSpring2022/cs313/notes/StudyGuide2.txt">official study guide</a></p>
+<h2 id="worked-problems"><a class="header" href="#worked-problems"><em>Worked Problems</em></a></h2>
+<p><a href="https://leetcode.com/problems/nim-game/">LeetCode: Nim</a></p>
+<details>
+  <summary>Solution</summary>
+<p>Let's start at the simplest cases and see if we can find a pattern:</p>
+<ul>
+<li>n = 1, first player wins</li>
+<li>n = 2, first player wins</li>
+<li>n = 3,  first player wins</li>
+</ul>
+<p>For n = 4, let's consider all the cases:</p>
+<ul>
+<li>picks 1 =&gt; n = 3, second player wins by taking 3</li>
+<li>picks 2 =&gt; n = 2, second player wins by taking 2</li>
+<li>picks 3 =&gt; n = 1, second player wins by taking 1</li>
+</ul>
+<p>We can see that for each move, we have a new problem with a different number of n
+and the player's positions swapping.</p>
+<p>We might initially come up with a dynamic programming solution like this:</p>
+<pre><code class="language-python">class Solution:
+  def canWinNim(self, n: int) -&gt; bool:
+      # if n = 1, 2, 3, we can win immediately.
+      if n &lt; 4:
+          return True
+
+      # Invariant: if dp[i] is True, a player can win with i stones no matter what.
+      # initialize from 0 to n, ignore the first 0.
+      dp = [None for i in range(n + 1)]
+
+      # base cases:
+      for i in range(1, 4):
+          dp[i] = True
+      dp[4] = False
+
+      # Consider all cases from 4 to n.
+      for i in range(5, n + 1):
+          # Loop back to consider cases for taking 1 - 3 stones
+          for j in range(1, 4):
+              # If we take j stones, the other player will have i - j stones.
+              if not dp[i - j]:
+                  # If there exists a j such that other player cannot winn, then this
+                  # player can win.
+                  dp[i] = True
+                  break
+          else:
+              # for loop terminated without breaking, meaning it did not find a
+              # possible win condition. It is impossible to win with i stones left.
+              dp[i] = False
+
+      return dp[n]
+</code></pre>
+<p>Can we do better? If you manually evaluted more points for n (or examined the contents of the dynamic programming array), you'll
+find something interesting. Every 4th element is false (meaning it's impossible for the first player to win).</p>
+<p>We can shorten this to a simple check:</p>
+<pre><code class="language-python">class Solution:
+  def canWinNim(self, n: int) -&gt; bool:
+      return n % 4 != 0
+</code></pre>
+<p>Follow up: can you prove this using induction?</p>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/search-a-2d-matrix/">LeetCode: Search a 2D Matrix</a></p>
+<details>
+  <summary>Solution</summary>
+<p>The problem specifications hints towards a binary search. However, since this a matrix, we must modify our approach.
+We can think of the matrix as a large array with the rows stacked on top of each other. Knowing this, we can set our
+<code>low</code> and <code>high</code> to the appropriate bounds: <code>0</code> and <code>rows * columns - 1</code>, respectively. To get the row, we can use
+<code>mid // columns</code>. To get the column we can use <code>mid % columns</code>.</p>
+<pre><code class="language-python">class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -&gt; bool:
+        rows = len(matrix)
+        cols = len(matrix[0])
+        low = 0
+        high = rows * cols - 1
+        while low &lt;= high:
+            mid = low + (high - low) // 2
+            row = mid // cols
+            col = mid % cols
+            val = matrix[row][col]
+            if val == target:
+                return True
+            if val &lt; target:
+                low = mid + 1
+            else:
+                high = mid - 1
+        return False
+</code></pre>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/">LeetCode: Remove Nth Node from End of List</a></p>
+<details>
+  <summary>Solution</summary>
+<p>In a singly linked list, only the forward connections are stored in the node. To get the backwards connections (or the previous node), we can
+use recursion. The back/previous connections are stored implicitly on the stack.</p>
+<p>In the solution below, the helper function returns two values every time it's called: the new next node for the previous node and the previous
+node's n-th position from the end.</p>
+<p>On every function call, we update the current node's next. The current node's next is unchanged if the next node should not have been deleted.</p>
+<p>The time complexity is O(n) because we do one full traversal of the linked list.</p>
+<pre><code class="language-python">
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+  def removeNthFromEnd(self, head: ListNode, n: int) -&gt; ListNode:
+
+      def helper(node, place_to_remove):
+
+          # reached the end, let the previous node
+          # know that it's first
+          if not node:
+              return None, 1
+
+          node_next, place = helper(node.next, place_to_remove)
+
+          # update connection if necessary
+          node.next = node_next
+
+          # delete this node by returning this node's next to be updated
+          updated_node = node.next if place == place_to_remove else node
+
+          return updated_node, place + 1
+
+      return helper(head, n)[0]
+
+</code></pre>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/valid-parentheses/">LeetCode: Valid Parantheses</a></p>
+<details>
+<summary>Solution</summary>
+<p>Again, with problems like this it is good to write out some manual cases and manually identify if they are valid
+(while doing this look for ways to formalize the patterns you observe into code):</p>
+<ul>
+<li><code>((())) =&gt; OK</code></li>
+<li><code>((((() =&gt; WRONG</code></li>
+<li><code>{(}) =&gt; WRONG</code></li>
+<li><code>(())()) =&gt; WRONG</code></li>
+<li><code>)() =&gt; WRONG</code></li>
+</ul>
+<p>Some observations:</p>
+<ul>
+<li>Closing brackets must match with the opening brackets.</li>
+<li>Closing bracket pairs with the closest open bracket to its left.</li>
+<li>Each closing bracket must have an opening bracket to pair with.</li>
+</ul>
+<p>Knowing this, we want to use a stack because we are concerned with the ordering of the open parantheses -- more specifically,
+the most recent open parantheses we've found before.</p>
+<p>In our algorithm, whenever we come across an open parantheses, we add it to our stack of unclosed parantheses. Whenever
+we come across a closing parantheses, we want to check if the most recent open parantheses that we added matches it,
+if it does pop the open paranthese from the stack (it's no longer unclosed).</p>
+<p>The string is valid if our stack is empty at the end. This means we've cloesd all of our unopened parantheses.</p>
+<pre><code class="language-python">
+class Solution:
+    def isValid(self, s: str) -&gt; bool:
+
+
+        stack = []
+        close_to_open = { ')' : '(', ']' : '[', '}' : '{'}
+
+        for char in s:
+            # Must be an opening bracket
+            if char not in close_to_open:
+                stack.append(char)
+
+            # Closing bracket
+            else:
+                # No opening bracket to match.
+                if not stack:
+                    return False
+
+                # Opening bracket exists but doesn't match
+                if close_to_open[char] != stack.pop():
+                    return False
+
+        return not stack
+
+</code></pre>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/letter-combinations-of-a-phone-number/">LeetCode: Letter Combinations Phone Number</a></p>
+<details>
+  <summary>Solution</summary>
+<p>Create a mapping of the digits to all the possible letters. Iterate through all of them to consider all possibilities.
+Add to the auxiliary data structure, make the recursive call, then backtrack by popping.</p>
+<pre><code class="language-python">
+class Solution:
+    def letterCombinations(self, digits: str) -&gt; List[str]:
+        saved = {
+            '1': [],
+            '2': ['a', 'b', 'c'],
+            '3': ['d', 'e', 'f'],
+            '4': ['g', 'h', 'i'],
+            '5': ['j', 'k', 'l'],
+            '6': ['m', 'n', 'o'],
+            '7': ['p', 'q', 'r', 's'],
+            '8': ['t', 'u', 'v'],
+            '9': ['w', 'x', 'y', 'z']
+        }
+
+        # edge case
+        if not digits:
+            return []
+
+        def helper(result, digits, index, acc):
+            if index == len(digits):
+                result.append(''.join(acc))
+                return
+
+            combos = saved[digits[index]]
+            for combo in combos:
+                acc.append(combo)
+                helper(result, digits, index + 1, acc)
+                acc.pop()
+
+        builder = []
+        helper(builder, digits, 0, [])
+        return builder
+
+</code></pre>
+</details>
+<br/>
+<p><a href="https://leetcode.com/problems/house-robber/">LeetCode: House Robber</a></p>
+<details>
+  <summary>Solution</summary>
+<p>At every index, we have two choices: Rob this house or don't. If we rob this house, we have a smaller
+subproblem that excludes the nearby houses. If we don't, we have a smaller subproblem that excludes
+the current house. At first, a brute force approach might seem appropriate, but let's see if we can
+optimize this even further with memoization.</p>
+<p>Let's define <code>DP[i]</code> as the maxmimum money we can rob by considering all houses from indices 0 to i.
+Our recurrence can be something like: <code>DP[i + 1] = max(DP[i], DP[i - 1] + money[i])</code>. At index <code>i + 1</code>,
+we can either pick this house and add the optimal subproblem of <code>i - 1</code> or we can exclude this house
+and pick the optimal subproblem of <code>i</code>.</p>
+<pre><code class="language-python">
+class Solution:
+    def rob(self, nums: List[int]) -&gt; int:
+        if len(nums) == 1:
+            return nums[0]
+
+        dp = [0] * len(nums)
+
+        # base cases
+        dp[0] = nums[0]
+        dp[1] = max(dp[0], nums[1])
+
+        for i in range(2, len(nums)):
+            dp[i] = max(dp[i-2] + nums[i], dp[i-1])
+
+        # last index considers all the homes
+        return dp[-1]
+
+</code></pre>
+</details>
+<h2 id="additional-problems"><a class="header" href="#additional-problems"><em>Additional Problems</em></a></h2>
+<ul>
+<li><a href="https://leetcode.com/problems/linked-list-cycle/">Leetcode: Linked List Cycle</a></li>
+<li><a href="https://leetcode.com/problems/reverse-linked-list/">Leetcode: Reverse Linked List</a></li>
+<li><a href="https://open.kattis.com/contests/wf6xh5/problems/longincsubseq">Kattis: Longest Increasing Subsequence [Dynamic Programming]</a></li>
+<li><a href="https://leetcode.com/problems/restore-ip-addresses/">LeetCode: Restore IP Addresses [Recursive Backtracking]</a></li>
+<li><a href="https://leetcode.com/problems/ternary-expression-parser/">LeetCode: Ternary Expression Parser [Stacks]</a></li>
+<li><a href="https://leetcode.com/problems/search-insert-position/">LeetCode: Search Insert Position</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../exam1/algo/binsearch.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../exam3/practice.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../exam1/algo/binsearch.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../exam3/practice.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
